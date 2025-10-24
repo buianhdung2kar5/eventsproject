@@ -12,6 +12,7 @@ export default function Header() {
   }
   const handleClick = (id) => {
     setActiveNav(id)
+    navigate(id)
   }
   const handleLogin = () => {
     navigate(PATH.LOGIN)
@@ -35,11 +36,11 @@ export default function Header() {
 
           <div className="flex gap-20">
             {[
-              { id: 'home', label: 'Trang chủ' },
-              { id: 'events', label: 'Sự kiện' },
-              { id: 'news', label: 'Tin tức' },
-              { id: 'about', label: 'Giới thiệu' },
-              { id: 'contact', label: 'Liên hệ' },
+              { id: '/', label: 'Trang chủ' },
+              { id: '/events', label: 'Sự kiện' },
+              { id: '/news', label: 'Tin tức' },
+              { id: '/about', label: 'Giới thiệu' },
+              { id: '/contact', label: 'Liên hệ' },
             ].map((item) => (
               <nav
                 key={item.id}

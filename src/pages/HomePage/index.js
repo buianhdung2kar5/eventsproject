@@ -8,6 +8,7 @@ import { IoMdPeople } from 'react-icons/io'
 import ListOpTionFilterEvents from '../../components/Events/getListOptionsFilterEvents'
 import { DataFilterOptions } from '../../components/Events/DataFilterOption'
 import PopUpConfirmRegister from '../../feature/homePage/PopUpConfirmRegister'
+import '../../style/global.css'
 export default function HomePage() {
   const dataStatistic = [
     {
@@ -174,7 +175,7 @@ export default function HomePage() {
         <section className="bg-white pb-32">
           <ListOpTionFilterEvents data={DataOptionsFilter} />
         </section>
-        <section className="bg-white h-[250px]">
+        <section className="bg-white h-[250px] p-8">
           <PopUpConfirmRegister />
         </section>
       </div>
