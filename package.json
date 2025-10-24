@@ -1,7 +1,8 @@
 {
   "name": "eventsproject",
   "version": "0.1.0",
-  "homepage": "https://github.com/buianhdung2kar5/eventsproject",
+  "homepage": "https://buianhdung2kar5.github.io/eventsproject",
+
   "private": true,
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",
