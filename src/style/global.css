@@ -1,0 +1,13 @@
+/* src/index.css hoặc src/globals.css */
+
+.no-scrollbar {
+  /* Dành cho Firefox, IE, và Edge */
+  -ms-overflow-style: none; /* Ẩn trên IE và Edge */
+  scrollbar-width: none; /* Ẩn trên Firefox */
+}
+
+/* Quy tắc riêng cho WebKit (Chrome, Safari, Edge) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Ẩn hoàn toàn phần giao diện thanh cuộn */
+  width: 0; /* Đảm bảo không chiếm không gian */
+}

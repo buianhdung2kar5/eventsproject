@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        <BrowserRouter basename="/eventsproject">
           <MainRoutes />
         </BrowserRouter>
       </QueryClientProvider>
