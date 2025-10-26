@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../routes/path'
 import { FaUserCircle } from 'react-icons/fa'
 
