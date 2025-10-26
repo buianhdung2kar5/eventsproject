@@ -8,8 +8,8 @@
 //         {name}
 //     </button>
 // }
-export const Button = ({ onClick, name, type = "button", fullWidth = false, variant = "primary" }) => {
-    const baseClasses = "px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+export const Button = ({ onClick, name, type = "button", fullWidth = false, variant = "primary", icon = null }) => {
+    const baseClasses = "px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center gap-2"
     
     const variants = {
         primary: "bg-[#1E90FF] text-white hover:bg-[#006FDD]",
@@ -24,6 +24,7 @@ export const Button = ({ onClick, name, type = "button", fullWidth = false, vari
             onClick={onClick}
             className={`${baseClasses} ${variants[variant]} ${widthClass}`}
         >
+            {icon && icon}
             {name}
         </button>
     )

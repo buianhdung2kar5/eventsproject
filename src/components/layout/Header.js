@@ -1,11 +1,19 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../routes/path'
 import { FaUserCircle } from 'react-icons/fa'
 
 export default function Header() {
   const navigate = useNavigate()
-  const [activeNav, setActiveNav] = useState(null)
+  const location = useLocation()
+  const [activeNav, setActiveNav] = useState(location.pathname)
+  
+  // Cập nhật activeNav khi location thay đổi
+  useEffect(() => {
+    setActiveNav(location.pathname)
+  }, [location.pathname])
+  
   const [logined, setLogined] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const customNavCss = {
@@ -57,7 +65,7 @@ export default function Header() {
               { id: '/', label: 'Trang chủ' },
               { id: '/events', label: 'Sự kiện' },
               { id: '/news', label: 'Tin tức' },
-              { id: '/search', label: 'Tra cứu' },
+              { id: '/lookup', label: 'Tra cứu' },
               { id: '/about', label: 'Giới thiệu' },
               { id: '/contact', label: 'Liên hệ' },
             ].map((item) => (
