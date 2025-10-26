@@ -1,6 +1,7 @@
 import { LoginSignUp } from '../pages/Auth/Login_SignUp'
 import EventsPage from '../pages/Events'
 import HomePage from '../pages/HomePage'
+import ContactPage from '../pages/Contact'
 export const PATH = {
   HOME: '/',
   EVENTS: '/events',
@@ -32,4 +33,5 @@ export const pathElement = [
   },
   { path: PATH.HOME, element: <HomePage /> },
   { path: PATH.EVENTS, element: <EventsPage /> },
+  { path: PATH.CONTACT, element: <ContactPage />},
 ]
