@@ -7,12 +7,12 @@ export default function Header() {
   const navigate = useNavigate()
   const location = useLocation()
   const [activeNav, setActiveNav] = useState(location.pathname)
-  
+
   // Cập nhật activeNav khi location thay đổi
   useEffect(() => {
     setActiveNav(location.pathname)
   }, [location.pathname])
-  
+
   const [logined, setLogined] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const customNavCss = {
@@ -68,7 +68,6 @@ export default function Header() {
               { id: '/events', label: 'Sự kiện' },
               { id: '/news', label: 'Tin tức' },
               { id: '/lookup', label: 'Tra cứu' },
-              { id: '/about', label: 'Giới thiệu' },
               { id: '/contact', label: 'Liên hệ' },
             ].map((item) => (
               <nav
