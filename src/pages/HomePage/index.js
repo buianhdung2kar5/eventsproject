@@ -1,14 +1,10 @@
 import { MdDateRange } from 'react-icons/md'
 import { dataEvents } from '../../data/events/events'
-import { PiCertificateBold } from 'react-icons/pi'
-import { VscOrganization } from 'react-icons/vsc'
-import { MdOutlineDateRange } from 'react-icons/md'
-import { GiPositionMarker } from 'react-icons/gi'
-import { IoMdPeople } from 'react-icons/io'
 import ListOpTionFilterEvents from '../../components/Events/getListOptionsFilterEvents'
 import { DataFilterOptions } from '../../components/Events/DataFilterOption'
 import PopUpConfirmRegister from '../../feature/homePage/PopUpConfirmRegister'
 import '../../style/global.css'
+import ListDataEvents from '../../components/Events/ListDataEvents'
 export default function HomePage() {
   const dataStatistic = [
     {
@@ -48,7 +44,7 @@ export default function HomePage() {
       >
         <section id="logo">
           <img
-            src="/image/homePage/LogoHomePage.jpg"
+            src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.jpg'}
             className="w-full h-auto"
           />
         </section>
@@ -103,70 +99,8 @@ export default function HomePage() {
               tới
             </p>
           </div>
-          <div className="grid grid-cols-3 justify-items-stretch align-items-center w-[60%] gap-y-8 gap-x-8 line-clamp-2">
-            {dataEvent.map((item) => {
-              return (
-                <div
-                  key={item.id}
-                  className="bg-white border rounded-lg w-full h-[400px] relative flex flex-col gap-4 shadow-sm"
-                >
-                  <div className="w-full h-[40%] pb-2">
-                    <img
-                      src={`${item.img}`}
-                      className="border-0 rounded-tr-lg rounded-tl-lg "
-                    />
-                    <div className="absolute top-3 right-3 flex items-center justify-center bg-[#5FA9F0] border-0 rounded-lg">
-                      <p className="text-white p-1">
-                        <PiCertificateBold size="12px" />
-                      </p>
-                      <p
-                        className="
-                      text-white p-1 pl-0  text-[12px]
-                    "
-                      >
-                        {item.certificate}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <div className="flex items-center relative p-2">
-                      <p className="absolute left-2 bg-[#EFF1CF] border rounded-[10px] font-medium px-2 py-[2px] text-[12px]">
-                        {item.category}
-                      </p>
-                      <p className="absolute right-4 text-[#00A63E] text-[14px]">
-                        {item.price}
-                      </p>
-                    </div>
-                    <div className="ml-2 text-[16px] line-clamp-1">
-                      {item.name}
-                    </div>
-                    <div className="ml-2 flex  gap-1 items-center text-[#6B7280]">
-                      <VscOrganization />
-                      <p>{item.organization}</p>
-                    </div>
-                    <div className="ml-2 flex gap-1 items-center text-[#6B7280]">
-                      <MdOutlineDateRange size="14px" />
-                      <p className="text-14px">
-                        {item.date} - {item.hours}
-                      </p>
-                    </div>
-                    <div className="ml-2 flex gap-1 items-center text-[#6B7280]">
-                      <GiPositionMarker size="14px" />
-                      <p className="text-14px">{item.address}</p>
-                    </div>
-                    <div className="ml-2 flex gap-1 items-center text-[14px] text-[#6B7280]">
-                      <IoMdPeople />
-                      <p>
-                        {item.memberResgiter}/{item.slots} người đăng ký
-                      </p>
-                    </div>
-                  </div>
-                  <button className="bg-[#5FA9F0] text-white border rounded-lg w-[90%] mx-auto p-1 font-medium">
-                    Đăng ký ngay!
-                  </button>
-                </div>
-              )
-            })}
+          <div className="w-[60%]">
+            <ListDataEvents />
           </div>
           <button className="border rounded-lg bg-white p-4 font-medium text-[16px]">
             Xem tất cả sự kiện

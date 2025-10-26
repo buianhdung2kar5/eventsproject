@@ -39,7 +39,7 @@ export default function Header() {
               { id: '/', label: 'Trang chủ' },
               { id: '/events', label: 'Sự kiện' },
               { id: '/news', label: 'Tin tức' },
-              { id: '/about', label: 'Giới thiệu' },
+              { id: '/search', label: 'Tra cứu' },
               { id: '/contact', label: 'Liên hệ' },
             ].map((item) => (
               <nav
