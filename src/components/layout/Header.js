@@ -1,9 +1,16 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { PATH } from '../../routes/path'
 export default function Header() {
   const navigate = useNavigate()
-  const [activeNav, setActiveNav] = useState(null)
+  const location = useLocation()
+  const [activeNav, setActiveNav] = useState(location.pathname)
+  
+  // Cập nhật activeNav khi location thay đổi
+  useEffect(() => {
+    setActiveNav(location.pathname)
+  }, [location.pathname])
+  
   const customNavCss = {
     default:
       'p-2 m-2 font-bold cursor-pointer hover:text-blue-300 transform transition-transform duration-300 hover:-translate-y-1 h-fit',
@@ -39,7 +46,7 @@ export default function Header() {
               { id: '/', label: 'Trang chủ' },
               { id: '/events', label: 'Sự kiện' },
               { id: '/news', label: 'Tin tức' },
-              { id: '/search', label: 'Tra cứu' },
+              { id: '/lookup', label: 'Tra cứu' },
               { id: '/about', label: 'Giới thiệu' },
               { id: '/contact', label: 'Liên hệ' },
             ].map((item) => (
