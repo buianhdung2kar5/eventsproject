@@ -11,8 +11,9 @@ function formatDateIsoToVN(dateStr) {
 
 export default function NewsCard({ item }) {
   return (
-    <article className="w-full bg-white rounded-xl shadow-sm overflow-hidden border hover:shadow-md transition-all duration-200">
+    <article className="w-full bg-white rounded-xl shadow-sm overflow-hidden border hover:shadow-md transition-all duration-200 hover:-translate-y-2 hover:shadow-xl hover:scale-[1.02]">
       {/* Image */}
+
       <img
         src={item.image}
         alt={item.title}

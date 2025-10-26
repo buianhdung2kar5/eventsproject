@@ -5,6 +5,7 @@ import { DataFilterOptions } from '../../components/Events/DataFilterOption'
 import PopUpConfirmRegister from '../../feature/homePage/PopUpConfirmRegister'
 import '../../style/global.css'
 import ListDataEvents from '../../components/Events/ListDataEvents'
+import AboutEventsWeb from '../../feature/AboutWeb/AboutEventsWeb'
 export default function HomePage() {
   const dataStatistic = [
     {
@@ -90,7 +91,7 @@ export default function HomePage() {
         </section>
         <section
           id="outstandingEvents"
-          className="bg-white flex flex-col justify-center items-center gap-4 w-full pb-36"
+          className="bg-white flex flex-col justify-center items-center gap-4 w-full pb-28"
         >
           <div className="flex flex-col items-center justify-center gap-2 border-t  w-full">
             <p className="font-bold p-2">Sự kiện nổi bật</p>
@@ -106,10 +107,11 @@ export default function HomePage() {
             Xem tất cả sự kiện
           </button>
         </section>
-        <section className="bg-white pb-32">
-          <ListOpTionFilterEvents data={DataOptionsFilter} />
+        <section className="bg-white w-full">
+          {/* <ListOpTionFilterEvents data={DataOptionsFilter} /> */}
+          <AboutEventsWeb />
         </section>
-        <section className="bg-white h-[250px] p-8">
+        <section className="bg-white h-[250px] p-y-8 w-full mb-8">
           <PopUpConfirmRegister />
         </section>
       </div>

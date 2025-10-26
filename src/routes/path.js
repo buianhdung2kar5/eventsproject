@@ -21,7 +21,7 @@ export const pathElement = [
     element: (
       <LoginSignUp
         type={'Đăng Nhập'}
-        onClose={() => (window.location.href = '/')}
+        onClose={() => (window.location.href = '/eventsproject')}
       />
     ),
   },
@@ -30,7 +30,7 @@ export const pathElement = [
     element: (
       <LoginSignUp
         type={'Đăng Ký'}
-        onClose={() => (window.location.href = '/')}
+        onClose={() => (window.location.href = '/eventsproject')}
       />
     ),
   },
