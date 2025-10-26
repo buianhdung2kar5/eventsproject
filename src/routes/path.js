@@ -3,11 +3,13 @@ import EventsPage from '../pages/Events'
 import HomePage from '../pages/HomePage'
 import News from '../pages/News'
 import ContactPage from '../pages/Contact'
+import CertificateLookup from '../pages/CertificateLookup'
 import DetailAccount from '../pages/Auth/DetailAccount'
 export const PATH = {
   HOME: '/',
   EVENTS: '/events',
   NEWS: '/news',
+  LOOKUP: '/lookup',
   ABOUT: '/about',
   CONTACT: '/contact',
   LOGIN: '/login',
@@ -38,5 +40,6 @@ export const pathElement = [
   { path: PATH.EVENTS, element: <EventsPage /> },
   { path: PATH.NEWS, element: <News /> },
   { path: PATH.CONTACT, element: <ContactPage /> },
+  { path: PATH.LOOKUP, element: <CertificateLookup /> },
   { path: PATH.ACCOUNT, element: <DetailAccount /> },
 ]
