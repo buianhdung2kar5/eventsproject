@@ -89,7 +89,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
                   <div>
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <img
-                        src="image/CertificateLookup/date.svg"
+                        src="image/certificateLookup/date.svg"
                         alt="Biểu tượng lịch"
                         className="w-5 h-5"
                       />
@@ -103,7 +103,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
                   <div>
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <img
-                        src="image/CertificateLookup/location.svg"
+                        src="image/certificateLookup/location.svg"
                         alt="Biểu tượng địa điểm"
                         className="w-5 h-5"
                       />
@@ -117,7 +117,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
                   <div>
                     <div className="flex items-center justify-center gap-2 mb-2">
                       <img
-                        src="image/CertificateLookup/organization.svg"
+                        src="image/certificateLookup/organization.svg"
                         alt="Biểu tượng tổ chức"
                         className="w-5 h-5"
                       />
@@ -156,7 +156,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
 
                 <div className="flex items-center justify-center">
                   <img
-                    src="image/CertificateLookup/SV5TModel.svg"
+                    src="image/certificateLookup/SV5TModel.svg"
                     alt="Icon SV5T model"
                     className="w-30 h-30"
                   />
@@ -172,7 +172,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
                 fullWidth={true}
                 icon={
                   <img
-                    src="image/CertificateLookup/download.svg"
+                    src="image/certificateLookup/download.svg"
                     alt="Icon tải"
                     className="w-5 h-5"
                   />
@@ -186,7 +186,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
                 fullWidth={true}
                 icon={
                   <img
-                    src="image/CertificateLookup/SV5T.svg"
+                    src="image/certificateLookup/SV5T.svg"
                     alt="Icon SV5T"
                     className="w-5 h-5 brightness-0"
                   />
