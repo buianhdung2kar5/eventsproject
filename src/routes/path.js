@@ -14,6 +14,7 @@ export const PATH = {
   CONTACT: '/contact',
   LOGIN: '/login',
   REGISTER: '/register',
+  ACCOUNT: '/account',
 }
 export const pathElement = [
   //auth
