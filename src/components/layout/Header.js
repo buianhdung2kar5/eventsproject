@@ -53,10 +53,13 @@ export default function Header() {
           <div
             className="flex items-center p-4 cursor-pointer"
             onClick={() => {
-              window.location.href = '/'
+              window.location.href = '/eventsproject'
             }}
           >
-            <img src="/image/Logo.png" className="rounded-lg h-full w-full" />
+            <img
+              src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.jpg'}
+              className="rounded-md h-12 w-12"
+            />
           </div>
 
           <div className="flex gap-20">

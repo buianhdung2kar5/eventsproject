@@ -8,7 +8,7 @@ export const dataNews = [
     date: '2025-10-15',
     author: 'Nguyễn Văn A',
     image:
-      'https://images.unsplash.com/photo-1581093588401-22da3fa66312?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 2,
