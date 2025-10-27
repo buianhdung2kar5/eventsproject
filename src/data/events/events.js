@@ -1,7 +1,7 @@
 export const dataEvents = [
   {
     id: 1,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/AiImage.png',
     category: 'Công nghệ',
     name: 'Hội thảo AI 2025',
     address: 'Hà Nội',
@@ -11,11 +11,11 @@ export const dataEvents = [
     memberResgiter: 19,
     slots: 500,
     price: 'Free',
-    certificate: 'SV 5 tốt',
+    certificate: 'Talkshow', // Đã sửa
   },
   {
     id: 2,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/Robot.png',
     category: 'Công nghệ',
     name: 'Triển lãm Robot Quốc tế',
     address: 'TP. Hồ Chí Minh',
@@ -25,11 +25,11 @@ export const dataEvents = [
     memberResgiter: 120,
     slots: 1000,
     price: '150000',
-    certificate: 'Chứng nhận tham dự',
+    certificate: 'Triển lãm', // Đã sửa
   },
   {
     id: 3,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/Summit.png',
     category: 'Kinh doanh',
     name: 'Startup Summit Việt Nam',
     address: 'Đà Nẵng',
@@ -39,25 +39,25 @@ export const dataEvents = [
     memberResgiter: 350,
     slots: 500,
     price: 'Free',
-    certificate: 'Giấy khen Khởi nghiệp',
+    certificate: 'Talkshow', // Đã sửa (Summit/Hội nghị)
   },
   {
     id: 4,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/Educate.png',
     category: 'Giáo dục',
     name: 'Hội thảo Giáo dục Số',
-    address: 'Huế',
+    address: 'Hà Nội',
     hours: '14:00',
     date: '05/08/2025',
-    organization: 'ĐH Sư phạm Huế',
+    organization: 'ĐH Sư phạm Hà Nội',
     memberResgiter: 180,
     slots: 300,
     price: 'Free',
-    certificate: 'Chứng nhận Giáo dục Sáng tạo',
+    certificate: 'Talkshow', // Đã sửa (Hội thảo)
   },
   {
     id: 5,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/Health.png',
     category: 'Y tế',
     name: 'Công nghệ trong Chăm sóc Sức khỏe',
     address: 'Cần Thơ',
@@ -67,11 +67,11 @@ export const dataEvents = [
     memberResgiter: 210,
     slots: 400,
     price: '200000',
-    certificate: 'Chứng nhận Y tế số',
+    certificate: 'Talkshow', // Đã sửa (Hội nghị/Hội thảo)
   },
   {
     id: 6,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/BlockChainFinTech.png',
     category: 'Tài chính',
     name: 'Diễn đàn Blockchain & Fintech 2025',
     address: 'TP. Hồ Chí Minh',
@@ -81,11 +81,11 @@ export const dataEvents = [
     memberResgiter: 270,
     slots: 600,
     price: 'Free',
-    certificate: 'Chứng nhận Fintech Việt Nam',
+    certificate: 'Talkshow', // Đã sửa (Diễn đàn)
   },
   {
     id: 7,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/GreenEnergy.png',
     category: 'Môi trường',
     name: 'Hội nghị Năng lượng Xanh',
     address: 'Hà Nội',
@@ -95,11 +95,11 @@ export const dataEvents = [
     memberResgiter: 400,
     slots: 800,
     price: '100000',
-    certificate: 'Chứng nhận Bảo vệ Môi trường',
+    certificate: 'Talkshow', // Đã sửa (Hội nghị)
   },
   {
     id: 8,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/Design.png',
     category: 'Thiết kế',
     name: 'Creative Design Week 2025',
     address: 'Đà Nẵng',
@@ -109,11 +109,11 @@ export const dataEvents = [
     memberResgiter: 150,
     slots: 300,
     price: 'Free',
-    certificate: 'Chứng nhận Nhà thiết kế sáng tạo',
+    certificate: 'Workshop', // Đã sửa (Tuần lễ sáng tạo)
   },
   {
     id: 9,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/CyberSecurity.png',
     category: 'An ninh mạng',
     name: 'Cyber Security Vietnam 2025',
     address: 'Hà Nội',
@@ -123,11 +123,11 @@ export const dataEvents = [
     memberResgiter: 500,
     slots: 700,
     price: '250000',
-    certificate: 'Chứng nhận An ninh mạng',
+    certificate: 'Training', // Đã sửa
   },
   {
     id: 10,
-    img: '/image/homePage/LogoHomePage.jpg',
+    img: '/image/listEvents/Agriculture.png',
     category: 'Nông nghiệp',
     name: 'Hội nghị Nông nghiệp Thông minh',
     address: 'Lâm Đồng',
@@ -137,6 +137,6 @@ export const dataEvents = [
     memberResgiter: 260,
     slots: 500,
     price: 'Free',
-    certificate: 'Chứng nhận Nông nghiệp thông minh',
+    certificate: 'Workshop', // Đã sửa (Hội nghị)
   },
 ]

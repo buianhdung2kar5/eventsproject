@@ -4,7 +4,7 @@ export const SectionCard = ({ icon, title, content }) => {
       <div className="flex items-start gap-4">
         <div className="flex justify-center items-center w-12 h-12">
           {icon.endsWith(".svg") ? (
-            <img src={icon} alt={title} className="w-12 h-12" />
+            <img src={process.env.PUBLIC_URL +`${icon}`} alt={title} className="w-12 h-12" />
           ) : (
             <span className="text-4xl">{icon}</span>
           )}

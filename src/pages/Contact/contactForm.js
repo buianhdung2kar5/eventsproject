@@ -21,7 +21,7 @@ export const ContactForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("📩 Form Data:", formData)
+        console.log(" Form Data:", formData)
         alert("Tin nhắn đã được gửi!")
         
         setFormData({
