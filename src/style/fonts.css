@@ -1,0 +1,129 @@
+/* Font Configuration for Events Project */
+
+/* Import Proxima Nova from Google Fonts (if available) or use Inter as fallback */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Alternative: If you have Proxima Nova font files locally, uncomment and modify the path */
+/*
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./fonts/ProximaNova-Regular.woff2') format('woff2'),
+       url('./fonts/ProximaNova-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('./fonts/ProximaNova-Bold.woff2') format('woff2'),
+       url('./fonts/ProximaNova-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* Global font family with fallback system */
+:root {
+  --font-primary: 'Proxima Nova', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Apply font to all elements */
+* {
+  font-family: var(--font-primary);
+}
+
+/* Specific font classes for different use cases */
+.font-proxima {
+  font-family: 'Proxima Nova', 'Inter', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', 'Proxima Nova', sans-serif;
+}
+
+/* Responsive font sizes using Proxima Nova */
+.text-proxima-xs {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-proxima-sm {
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-proxima-base {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-proxima-lg {
+  font-family: var(--font-primary);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-proxima-xl {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-proxima-2xl {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-proxima-3xl {
+  font-family: var(--font-primary);
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-proxima-4xl {
+  font-family: var(--font-primary);
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+/* Font weight utilities */
+.font-proxima-light {
+  font-family: var(--font-primary);
+  font-weight: 300;
+}
+
+.font-proxima-normal {
+  font-family: var(--font-primary);
+  font-weight: 400;
+}
+
+.font-proxima-medium {
+  font-family: var(--font-primary);
+  font-weight: 500;
+}
+
+.font-proxima-semibold {
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+.font-proxima-bold {
+  font-family: var(--font-primary);
+  font-weight: 700;
+}
+
+.font-proxima-extrabold {
+  font-family: var(--font-primary);
+  font-weight: 800;
+}
+
+.font-proxima-black {
+  font-family: var(--font-primary);
+  font-weight: 900;
+}

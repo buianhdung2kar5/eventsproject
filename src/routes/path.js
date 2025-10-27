@@ -5,9 +5,11 @@ import News from '../pages/News'
 import ContactPage from '../pages/Contact'
 import CertificateLookup from '../pages/CertificateLookup'
 import DetailAccount from '../pages/Auth/DetailAccount'
+import DetaileEvents from '../pages/Events/DetailEvents'
 export const PATH = {
   HOME: '/',
-  EVENTS: '/events',
+  EVENTS: '/events', // <--- Dùng cho trang danh sách
+  EVENT_DETAIL: '/events/:uuid', // <--- Dùng cho trang chi tiết (với dấu :)
   NEWS: '/news',
   LOOKUP: '/lookup',
   ABOUT: '/about',
@@ -42,4 +44,5 @@ export const pathElement = [
   { path: PATH.CONTACT, element: <ContactPage /> },
   { path: PATH.LOOKUP, element: <CertificateLookup /> },
   { path: PATH.ACCOUNT, element: <DetailAccount /> },
+  {path: PATH.EVENT_DETAIL, element:<DetaileEvents />}
 ]

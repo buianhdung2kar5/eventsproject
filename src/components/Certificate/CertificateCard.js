@@ -7,7 +7,7 @@ export const CertificateCard = ({ certificate, onViewCertificate, onDownload }) 
             <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-3">
                     <img 
-                        src="image/certificateLookup/SV5T.svg"
+                        src={process.env.PUBLIC_URL+"/image/certificateLookup/SV5T.svg"}
                         alt="Biểu tượng chứng chỉ"
                         className="w-6 h-6"
                     />
@@ -47,7 +47,7 @@ export const CertificateCard = ({ certificate, onViewCertificate, onDownload }) 
                 <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-start gap-2">
                         <img 
-                            src="image/certificateLookup/date.svg"
+                            src={process.env.PUBLIC_URL+ "/image/certificateLookup/date.svg"}
                             alt="Biểu tượng lịch"
                             className="w-5 h-5"
                         />

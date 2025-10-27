@@ -5,8 +5,16 @@ import { GiPositionMarker } from 'react-icons/gi'
 import { IoMdPeople } from 'react-icons/io'
 import '../../style/global.css'
 import { dataEvents } from '../../data/events/events'
+import {useNavigate} from 'react-router-dom'
+import {PATH} from '../../routes/path'
+import {useParams} from 'react-router-dom'
 export default function ListDataEvents() {
+  const navigate = useNavigate()
   const dataEvent = dataEvents
+  const viewDetail = (id)=>{
+    // const ss
+    navigate(PATH.EVENTS)
+  }
   return (
     <div className="grid grid-cols-3 justify-items-stretch align-items-center w-full gap-y-8 gap-x-8 line-clamp-2">
       {dataEvent.map((item) => {
@@ -16,13 +24,15 @@ export default function ListDataEvents() {
             className="bg-white border rounded-lg w-full h-[412px] relative flex flex-col gap-4 shadow-md overflow-hidden
              transition-all duration-300 ease-in-out 
              hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.03] hover:border-[#5FA9F0] cursor-pointer"
+             onClick={() =>viewDetail(item.id)}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-700"></div>
 
-            <div className="w-full h-[40%] pb-2">
+            <div className="w-full h-[44%] pb-2 relative overflow-hidden">
               <img
                 src={process.env.PUBLIC_URL + `${item.img}`}
-                className="border-0 rounded-tr-lg rounded-tl-lg "
+                className="w-full h-full object-cover border-0 rounded-tr-lg rounded-tl-lg"
+                alt={item.name}
               />
               <div className="absolute top-3 right-3 flex items-center justify-center bg-[#5FA9F0] border-0 rounded-lg">
                 <p className="text-white p-1">

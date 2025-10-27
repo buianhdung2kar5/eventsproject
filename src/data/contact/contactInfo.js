@@ -25,25 +25,25 @@ export const contactInfo = {
 export const contactSections = [
   {
     id: 1,
-    icon: "image/contactPage/email.svg",
+    icon: "/image/contactPage/email.svg",
     title: contactInfo.email.title,
     content: [contactInfo.email.primary, contactInfo.email.secondary],
   },
   {
     id: 2,
-    icon: "image/contactPage/phone.svg",
+    icon: "/image/contactPage/phone.svg",
     title: contactInfo.phone.title,
     content: [contactInfo.phone.hotline, contactInfo.phone.office],
   },
   {
     id: 3,
-    icon: "image/contactPage/location.svg",
+    icon: "/image/contactPage/location.svg",
     title: contactInfo.address.title,
     content: [contactInfo.address.street, contactInfo.address.city],
   },
   {
     id: 4,
-    icon: "image/contactPage/clock.svg",
+    icon: "/image/contactPage/clock.svg",
     title: contactInfo.workingHours.title,
     content: [
       contactInfo.workingHours.weekdays,
