@@ -1,6 +1,7 @@
 import AccountInfo from '../../feature/Auth/components/AccountInfo'
 import AboutEventsOfAccount from '../../feature/Auth/components/EventsOfAccount'
 import ChecKEventsAccount from '../../feature/Auth/components/CheckEventsAccount'
+import PortfolioManager from'../../components/PortFolio'
 export default function DetailAccount() {
   return (
     <div className="w-full flex flex-col items-center gap-4">
@@ -13,6 +14,11 @@ export default function DetailAccount() {
         </div>
         <div className="w-full">
           <AccountInfo />
+        </div>
+        <div
+        className='w-full'
+        >
+          <PortfolioManager />
         </div>
         <div className="w-full">
           <AboutEventsOfAccount />
