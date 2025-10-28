@@ -58,7 +58,7 @@ export default function Header() {
             }}
           >
             <img
-              src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.jpg'}
+              src={process.env.PUBLIC_URL + '/image/Logo.png'}
               className="rounded-md"
               style={{
                 height: 'clamp(32px, 4vw, 48px)',

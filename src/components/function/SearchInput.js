@@ -114,7 +114,7 @@ const handleLocationChange = (location)=>{
               className="w-[90%]"
             />
           </div>
-          <p classsName='font-medium p-2 pl-0'>Địa điểm</p>
+          <p className='font-medium p-2 pl-0'>Địa điểm</p>
           <div className='flex flex-wrap gap-4 p-4 pt-0 pl-0'>
             {locationOptions.map((item, index) => (
               <label
