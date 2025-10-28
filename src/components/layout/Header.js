@@ -49,7 +49,7 @@ export default function Header() {
   return (
     <>
       <header>
-        <div className="navi fixed top-0 left-0 w-full z-50 bg-white flex items-center pl-[4%] shadow-md" style={{height: 'clamp(50px, 8vh, 80px)'}}>
+        <div className="navi fixed top-0 left-0 w-full z-50 bg-white flex items-center pl-[4%] shadow-md h-[60px]">
           {/* Logo Section */}
           <div
             className="flex items-center cursor-pointer flex-shrink-0"

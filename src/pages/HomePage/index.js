@@ -43,12 +43,29 @@ export default function HomePage() {
       min-h-screen
       "
       >
-          <img
-            src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.png'}
-            className="w-full block pb-0"
-            style={{ height: '250px', objectFit: 'cover', objectPosition: 'center' }}
-          />
-        <br></br>
+         <div 
+  style={{ 
+    width: '100%', // Đặt chiều rộng bạn muốn hiển thị (ví dụ 300px)
+    height: '400px', // Đặt chiều cao bạn muốn hiển thị (ví dụ 100px)
+    overflow: 'hidden', // Ẩn đi phần ảnh bị tràn ra ngoài
+    margin: '0 0', 
+    // padding:'0 0'// Canh giữa (tùy chọn)
+  }}
+  className='p-0'
+>
+    <img
+        src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.png'}
+        className="w-full block pb-0"
+        style={{ 
+            height: '450px', 
+            objectFit: 'cover', 
+            objectPosition: 'center',
+            // Căn chỉnh ảnh bên trong DIV để phần logo nằm ở trung tâm
+            // Bạn có thể cần dịch chuyển ảnh bằng translate() nếu nó quá lớn
+            // Ví dụ: transform: 'translateY(-100px)'
+        }}
+    />
+</div>
         <section
           id="events"
           className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[300px] border-b"
