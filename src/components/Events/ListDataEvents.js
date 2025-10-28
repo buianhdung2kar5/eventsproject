@@ -5,18 +5,18 @@ import { GiPositionMarker } from 'react-icons/gi'
 import { IoMdPeople } from 'react-icons/io'
 import '../../style/global.css'
 import { dataEvents } from '../../data/events/events'
-import {useNavigate} from 'react-router-dom'
-import {PATH} from '../../routes/path'
-import {useParams} from 'react-router-dom'
-import {DetailEvents} from '../../data/events/DetailEvents'
-import {useState} from 'react'
-export default function ListDataEvents({data}) {
+import { useNavigate } from 'react-router-dom'
+import { PATH } from '../../routes/path'
+import { useParams } from 'react-router-dom'
+import { DetailEvents } from '../../data/events/DetailEvents'
+import { useState } from 'react'
+export default function ListDataEvents({ data }) {
   const navigate = useNavigate()
   const dataEvent = data
-  ? dataEvents.filter(item => data.some(d => d.id === item.id))
-  : dataEvents
+    ? dataEvents.filter((item) => data.some((d) => d.id === item.id))
+    : dataEvents
   const viewDetail = (id) => {
-    navigate(`${PATH.EVENTS}/${id}`);
+    navigate(`${PATH.EVENTS}/${id}`)
   }
   return (
     <div className="grid grid-cols-3 justify-items-stretch align-items-center w-full gap-y-8 gap-x-8 line-clamp-2">
@@ -27,7 +27,7 @@ export default function ListDataEvents({data}) {
             className="bg-white border rounded-lg w-full h-[412px] relative flex flex-col gap-4 shadow-md overflow-hidden
              transition-all duration-300 ease-in-out 
              hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.03] hover:border-[#5FA9F0] cursor-pointer"
-             onClick={() =>viewDetail(item.id)}
+            onClick={() => viewDetail(item.id)}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-700"></div>
 

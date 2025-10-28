@@ -3,6 +3,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../routes/path'
 const PortfolioItem = ({
+  id,
   title,
   description,
   status,
@@ -10,6 +11,7 @@ const PortfolioItem = ({
   date,
   views,
   downloads,
+  //   handleDelete,
 }) => {
   const navigate = useNavigate()
   const statusClass =
@@ -203,7 +205,7 @@ const PortfolioItem = ({
         </button>
         <button
           className="flex items-center px-3 py-1 bg-gray-50 text-gray-700 rounded-md hover:bg-gray-100 transition-colors"
-          onClick={() => console.log(`Chỉnh sửa ${title}`)}
+          onClick={() => navigate(PATH.EDITPORTFOLIO.replace(':id', id))}
         >
           <svg
             className="w-4 h-4 mr-1"
@@ -223,7 +225,7 @@ const PortfolioItem = ({
         </button>
         <button
           className="flex items-center px-3 py-1 bg-gray-50 text-red-600 rounded-md hover:bg-gray-100 transition-colors"
-          onClick={() => console.log(`Xóa ${title}`)}
+          //   onClick={handleDelete(id)}
         >
           <svg
             className="w-4 h-4 mr-1"

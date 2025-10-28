@@ -6,6 +6,11 @@ import { PATH } from '../../../routes/path'
 export default function SideBarFunction({ items }) {
   const navigate = useNavigate()
   const handleExport = () => {
+    const arr = []
+    items.map((item) => {
+      arr.push(item.id)
+    })
+    localStorage.setItem('CreateProtfolio', JSON.stringify(arr))
     navigate(PATH.PORTFOLIO)
   }
   return (

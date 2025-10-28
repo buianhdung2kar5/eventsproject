@@ -2,8 +2,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../routes/path'
+import { DetailEvents } from '../../data/events/DetailEvents'
 const HeaderSection = () => {
   const navigate = useNavigate()
+
   return (
     <div className="flex justify-between items-center mb-6 mt-8">
       <div>
