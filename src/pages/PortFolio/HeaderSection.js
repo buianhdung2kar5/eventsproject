@@ -2,7 +2,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../routes/path'
-import { DetailEvents } from '../../data/events/DetailEvents'
 const HeaderSection = () => {
   const navigate = useNavigate()
 

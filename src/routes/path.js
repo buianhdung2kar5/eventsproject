@@ -10,6 +10,7 @@ import PortfolioManagerPage from '../pages/PortFolio/PortFolioAccount'
 import Statistic from '../pages/PortFolio/Statistic/Statistic'
 import SeePortfolio from '../pages/PortFolio/SeePortfolio'
 import EditPortfolio from '../pages/PortFolio/EditPortfolio/EditPortfolio'
+import RankingPage from '../pages/Ranking'
 export const PATH = {
   HOME: '/',
   EVENTS: '/events', // <--- Dùng cho trang danh sách
@@ -25,6 +26,7 @@ export const PATH = {
   PORTFOLIO_DETAIL: '/portfolio/:id',
   STATISTICPORTFOLIO: '/statistic',
   EDITPORTFOLIO: '/portfolio/edit/:id',
+  RANKING: '/ranking',
 }
 export const pathElement = [
   //auth
@@ -52,6 +54,8 @@ export const pathElement = [
   { path: PATH.CONTACT, element: <ContactPage /> },
   { path: PATH.LOOKUP, element: <CertificateLookup /> },
   { path: PATH.ACCOUNT, element: <DetailAccount /> },
+  { path: PATH.RANKING, element: <RankingPage /> },
+  { path: PATH.EVENT_DETAIL, element: <DetaileEvents /> },
   { path: PATH.EVENT_DETAIL, element: <DetaileEvents /> },
   { path: PATH.PORTFOLIO, element: <PortfolioManagerPage /> },
   { path: PATH.STATISTICPORTFOLIO, element: <Statistic /> },

@@ -11,7 +11,7 @@ const PortfolioItem = ({
   date,
   views,
   downloads,
-  //   handleDelete,
+
 }) => {
   const navigate = useNavigate()
   const statusClass =
