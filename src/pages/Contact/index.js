@@ -1,8 +1,11 @@
 import { SectionCard } from "./sectionCard";
 import { ContactForm } from "./contactForm";
 import { contactSections } from "../../data/contact/contactInfo";
+import { useNavigate } from "react-router-dom";
 
 const ContactPage = () => {
+    const navigate = useNavigate();
+
     return (
             <div className="bg-white min-h-screen py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,6 +54,16 @@ const ContactPage = () => {
                             ></iframe>
                         </div>
 
+                    </div>
+
+                    {/* Navigation to Ranking Page */}
+                    <div className="mt-12 flex justify-center">
+                        <button
+                            onClick={() => navigate('/ranking')}
+                            className="bg-[#5FA9F0] hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-md"
+                        >
+                            Xem Bảng Xếp Hạng →
+                        </button>
                     </div>
 
                 </div>
