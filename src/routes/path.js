@@ -9,7 +9,7 @@ import DetaileEvents from '../pages/Events/DetailEvents'
 export const PATH = {
   HOME: '/',
   EVENTS: '/events', // <--- Dùng cho trang danh sách
-  EVENT_DETAIL: '/events/:uuid', // <--- Dùng cho trang chi tiết (với dấu :)
+  EVENT_DETAIL: '/events/:id', // <--- Dùng cho trang chi tiết (với dấu :)
   NEWS: '/news',
   LOOKUP: '/lookup',
   ABOUT: '/about',

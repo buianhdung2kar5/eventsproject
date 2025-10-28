@@ -8,12 +8,15 @@ import { dataEvents } from '../../data/events/events'
 import {useNavigate} from 'react-router-dom'
 import {PATH} from '../../routes/path'
 import {useParams} from 'react-router-dom'
-export default function ListDataEvents() {
+import {DetailEvents} from '../../data/events/DetailEvents'
+import {useState} from 'react'
+export default function ListDataEvents({data}) {
   const navigate = useNavigate()
-  const dataEvent = dataEvents
-  const viewDetail = (id)=>{
-    // const ss
-    navigate(PATH.EVENTS)
+  const dataEvent = data
+  ? dataEvents.filter(item => data.some(d => d.id === item.id))
+  : dataEvents
+  const viewDetail = (id) => {
+    navigate(`${PATH.EVENTS}/${id}`);
   }
   return (
     <div className="grid grid-cols-3 justify-items-stretch align-items-center w-full gap-y-8 gap-x-8 line-clamp-2">

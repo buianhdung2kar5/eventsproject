@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        {/* 2. Đổi component và bỏ prop 'basename' */}
         <HashRouter> 
           <MainRoutes />
         </HashRouter>

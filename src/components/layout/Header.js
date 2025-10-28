@@ -48,8 +48,10 @@ export default function Header() {
 
   return (
     <>
-      <header>
-        <div className="navi fixed top-0 left-0 w-full z-50 bg-white flex items-center pl-[4%] shadow-md" style={{height: 'clamp(50px, 8vh, 80px)'}}>
+      <header
+      className='sticky top-0 left-0 w-full z-50 bg-white shadow-m'
+      >
+        <div className="navi flex items-center pl-[4%] " style={{height: 'clamp(50px, 8vh, 80px)'}}>
           {/* Logo Section */}
           <div
             className="flex items-center cursor-pointer flex-shrink-0"
@@ -58,11 +60,11 @@ export default function Header() {
             }}
           >
             <img
-              src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.jpg'}
+              src={process.env.PUBLIC_URL + '/image/Logo.png'}
               className="rounded-md"
               style={{
-                height: 'clamp(32px, 4vw, 48px)',
-                width: 'clamp(32px, 4vw, 48px)'
+                height: 'clamp(32px, 4vw, 40px)',
+                width: 'clamp(32px, 4vw, 40px)'
               }}
             />
           </div>
