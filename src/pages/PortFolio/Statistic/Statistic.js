@@ -1,8 +1,10 @@
 import React from 'react'
 import StatisticSection from './StatisticSection'
 // Giả định bạn có một component biểu đồ riêng, ví dụ: <LineChart data={...} />
-
+import { useNavigate } from 'react-router-dom'
+import { PATH } from '../../../routes/path'
 const Statistic = ({ profileData, chartData }) => {
+  const navigate = useNavigate()
   // Dữ liệu giả định dựa trên hình ảnh
   const defaultData = {
     totalViews: 6,
@@ -24,7 +26,10 @@ const Statistic = ({ profileData, chartData }) => {
       {/* Header */}
       <header className="mb-6">
         <div className="flex justify-between items-center">
-          <button className="text-blue-600 font-medium flex items-center">
+          <button
+            className="text-blue-600 font-medium flex items-center"
+            onClick={() => navigate(PATH.PORTFOLIO)}
+          >
             <svg
               className="w-4 h-4 mr-1"
               fill="none"
