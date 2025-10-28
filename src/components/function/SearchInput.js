@@ -54,7 +54,6 @@ export default function SearchInput({onSubmit}) {
   }
 
   const handleEventTypeChange = (eventType) => {
-
     setForm(prev => {
       const currentTypes = prev.eventTypes
       const newTypes = currentTypes.includes(eventType)
