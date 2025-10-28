@@ -6,6 +6,9 @@ import ContactPage from '../pages/Contact'
 import CertificateLookup from '../pages/CertificateLookup'
 import DetailAccount from '../pages/Auth/DetailAccount'
 import DetaileEvents from '../pages/Events/DetailEvents'
+import PortfolioManagerPage from '../pages/PortFolio/PortFolioAccount'
+import Statistic from '../pages/PortFolio/Statistic/Statistic'
+import SeePortfolio from '../pages/PortFolio/SeePortfolio'
 export const PATH = {
   HOME: '/',
   EVENTS: '/events', // <--- Dùng cho trang danh sách
@@ -17,6 +20,9 @@ export const PATH = {
   LOGIN: '/login',
   REGISTER: '/register',
   ACCOUNT: '/account',
+  PORTFOLIO: '/portfolio',
+  PORTFOLIO_DETAIL: '/portfolio/:id',
+  STATISTICPORTFOLIO: '/statistic',
 }
 export const pathElement = [
   //auth
@@ -44,5 +50,8 @@ export const pathElement = [
   { path: PATH.CONTACT, element: <ContactPage /> },
   { path: PATH.LOOKUP, element: <CertificateLookup /> },
   { path: PATH.ACCOUNT, element: <DetailAccount /> },
-  {path: PATH.EVENT_DETAIL, element:<DetaileEvents />}
+  { path: PATH.EVENT_DETAIL, element: <DetaileEvents /> },
+  { path: PATH.PORTFOLIO, element: <PortfolioManagerPage /> },
+  { path: PATH.STATISTICPORTFOLIO, element: <Statistic /> },
+  { path: PATH.PORTFOLIO_DETAIL, element: <SeePortfolio /> },
 ]

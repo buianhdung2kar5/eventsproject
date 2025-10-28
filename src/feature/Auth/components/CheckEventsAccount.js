@@ -7,21 +7,21 @@ import {
 } from 'react-icons/md'
 import { FaMapMarkerAlt, FaRegClock } from 'react-icons/fa'
 import { IoIosSave } from 'react-icons/io'
-
+import { FaCheck } from 'react-icons/fa'
+import SideBarFunction from '../../../feature/Auth/Protfolio/SideBarFunction'
+import { DetailEvents } from '../../../data/events/DetailEvents'
 export default function CheckEventsAccount() {
   const [activeTab, setActiveTab] = useState('done')
-
-  // ======= DỮ LIỆU MẪU =======
-  const completedEvents = [
-    {
-      title: 'Hội thảo Công nghệ AI 2025',
-      date: '15/10/2025',
-    },
-    {
-      title: 'Workshop Kỹ năng Thuyết trình',
-      date: '10/10/2025',
-    },
-  ]
+  const [isSelected, setIsSelected] = useState([])
+  const [itemSelected, setItemSelected] = useState([])
+  const completedEvents = DetailEvents.map((item) => {
+    return {
+      id: item.id,
+      title: item.name,
+      date: item.date,
+      certificate: item.certificate,
+    }
+  })
 
   const upcomingEvents = [
     {
@@ -48,7 +48,29 @@ export default function CheckEventsAccount() {
     email: 'admin@student.edu.vn',
     phone: '0123456789',
   }
+  const handleSetChoose = (i, item) => {
+    setIsSelected((prevIds) => {
+      const isAlreadySelected = prevIds?.includes(i)
 
+      if (isAlreadySelected) {
+        return prevIds.filter((id) => id !== i)
+      } else {
+        return [...prevIds, i]
+      }
+    })
+
+    setItemSelected((prevItems) => {
+      const isAlreadySelected = prevItems.some(
+        (prevItem) => prevItem.id === item.id
+      )
+
+      if (isAlreadySelected) {
+        return prevItems.filter((prevItem) => prevItem.id !== item.id)
+      } else {
+        return [...prevItems, item]
+      }
+    })
+  }
   // ======= JSX =======
   return (
     <section className="w-full mx-auto mt-6 font-sans">
@@ -83,17 +105,39 @@ export default function CheckEventsAccount() {
       {/* --- Tab 1: Sự kiện đã hoàn thành --- */}
       {activeTab === 'done' && (
         <div className="border rounded-2xl p-5">
-          <h2 className="font-semibold text-lg mb-1">Sự kiện đã hoàn thành</h2>
-          <p className="text-sm text-gray-500 mb-4">
-            Quét mã QR để nhận chứng nhận
-          </p>
-
+          <div className="flex mx-auto relative">
+            <div>
+              <h2 className="font-semibold text-lg mb-1">
+                Sự kiện đã hoàn thành
+              </h2>
+              <p className="text-sm text-gray-500 mb-4">
+                Chọn sự kiện để xuất hoặc tải hồ sơ
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <button className="absolute right-24  border rounded-lg px-4 py-2 text-center">
+                Bỏ chọn tất cả
+              </button>
+              <MdQrCode2 className="w-8 h-8 text-[#5FA9F0] absolute right-8 mt-1" />
+            </div>
+          </div>
+          {isSelected?.length ? (
+            <div className="w-full">
+              <SideBarFunction items={itemSelected} />
+            </div>
+          ) : null}
           <div className="space-y-3">
             {completedEvents.map((item, i) => (
               <div
                 key={i}
-                className="flex justify-between items-center border rounded-xl p-4 hover:shadow-sm"
+                className="flex justify-between items-center border rounded-xl p-4 hover:shadow-sm cursor-pointer"
+                onClick={() => handleSetChoose(i, item)}
               >
+                {isSelected?.includes(i) ? (
+                  <div className="order-1 text-green-400">
+                    <FaCheck className="text-[24px]" />
+                  </div>
+                ) : null}
                 <div>
                   <div className="flex items-center gap-2 text-green-600">
                     <MdCheckCircleOutline />
@@ -103,13 +147,9 @@ export default function CheckEventsAccount() {
                     Hoàn thành: {item.date}
                   </p>
                   <span className="inline-block text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded mt-2">
-                    🎖️ Chứng chỉ SV 5 tốt
+                    {item.certificate}
                   </span>
                 </div>
-                <button className="flex items-center gap-2 border rounded-lg px-3 py-2 text-sm hover:bg-gray-50">
-                  <MdQrCode2 className="text-lg" />
-                  Nhận chứng nhận
-                </button>
               </div>
             ))}
           </div>
