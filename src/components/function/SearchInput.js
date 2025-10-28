@@ -1,41 +1,30 @@
 import { DataFilterOptions } from '../Events/DataFilterOption'
-import { useState } from 'react'
-import { CiFilter } from 'react-icons/ci'
-import { FaSearch } from 'react-icons/fa'
+import { useState, useCallback, useRef } from 'react'
 import Select from '../../ui/Select'
-export default function SearchInput({onSubmit}) {
-  const options = DataFilterOptions
-  const itemOptions = 'text-[#090D00] bg-white'
-  const activeOptions = 'bg-[#5FA9F0] text-white'
 
-  const [hiddenFilter, setHiddenFilter] = useState(false)
+export default function SearchInput({ onSubmit }) {
+  const options = DataFilterOptions
+  const debounceTimerRef = useRef(null)
+
   const [form, setForm] = useState({
-    category: 'all',
-    eventTypes: [],
-    targetAudience: '',
     searchTerm: '',
+    category: 'all',
+    targetAudience: '',
     locations: [],
-    certificate:[],
+    eventTypes: [],
+    certificate: [],
   })
-  
-  const optionsInterface = [
-    'Workshop',
-    'Training',
-    'Talkshow',
-    'Cuộc thi',
-    'Hoạt động cộng đồng',
-    'Triển lãm',
-    'Khác',
-  ]
-  
+
+  const [showAdvanced, setShowAdvanced] = useState(false)
+
+  // Options data
   const objectOptions = [
-    {value:'all', label: 'Tất cả'},
-    {value:'student', label: 'Học sinh'},
-    {value:'university', label: 'Sinh viên'},
+    { value: 'all', label: 'Tất cả đối tượng' },
+    { value: 'student', label: 'Học sinh' },
+    { value: 'university', label: 'Sinh viên' },
   ]
 
   const locationOptions = [
-    'Tất cả',
     'Hà Nội',
     'TP. Hồ Chí Minh',
     'Đà Nẵng',
@@ -45,208 +34,218 @@ export default function SearchInput({onSubmit}) {
     'Phú Quốc'
   ]
 
-  // Update form state
-  const updateForm = (key, value) => {
-    setForm(prev => ({
-      ...prev,
-      [key]: value
-    }))
+  const eventTypeOptions = [
+    'Workshop',
+    'Training',
+    'Talkshow',
+    'Cuộc thi',
+    'Hoạt động cộng đồng',
+    'Triển lãm',
+    'Khác',
+  ]
+
+  const updateAndSubmit = useCallback((updates) => {
+    const newForm = { ...form, ...updates }
+    setForm(newForm)
+    // Auto-submit with slight delay để React update state
+    setTimeout(() => onSubmit(newForm), 0)
+  }, [form, onSubmit])
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value
+    setForm(prev => ({ ...prev, searchTerm: value }))
+    
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current)
+    }
+    
+    debounceTimerRef.current = setTimeout(() => {
+      updateAndSubmit({ searchTerm: value })
+    }, 300)
   }
 
-  const handleEventTypeChange = (eventType) => {
-    setForm(prev => {
-      const currentTypes = prev.eventTypes
-      const newTypes = currentTypes.includes(eventType)
-        ? currentTypes.filter(type => type !== eventType)
-        : [...currentTypes, eventType]
-      
-      return {
-        ...prev,
-        eventTypes: newTypes
-      }
-    })
+  const handleCategoryChange = (name) => {
+    updateAndSubmit({ category: name })
   }
-const handleLocationChange = (location)=>{
-  setForm(prev => {
-    const currentLocations = prev.locations
-    const newLocations = currentLocations.includes(location)
-      ? currentLocations.filter(loc => loc !== location)
-      : [...currentLocations, location]
-    
-    return {
-      ...prev,
-      locations: newLocations
-    }
-  })
-}
-const handleCertificateChange = (e) => {
-  const value = e.target.value
-  setForm(prev => {
-    const current = prev.certificate // Sử dụng tên trường 'certificate' đã định nghĩa trong state
-    
-    const newCerti = current.includes(value)
-      ? current.filter(cer => cer !== value) // Bỏ chọn
-      : [...current, value] // Thêm vào
-    
-    return {
-      ...prev,
-      certificate: newCerti // Cập nhật trường 'certificate'
-    }
-  })
-}
-  const handleSearchChange = (e) => {
-    updateForm('searchTerm', e.target.value)
+
+  const handleAudienceChange = (value) => {
+    updateAndSubmit({ targetAudience: value })
   }
-    const  handleSendFormFilter =() =>{
-    onSubmit(form)
+
+  const handleLocationToggle = (location) => {
+    const newLocations = form.locations.includes(location)
+      ? form.locations.filter(l => l !== location)
+      : [...form.locations, location]
+    updateAndSubmit({ locations: newLocations })
+  }
+
+  const handleEventTypeToggle = (type) => {
+    const newTypes = form.eventTypes.includes(type)
+      ? form.eventTypes.filter(t => t !== type)
+      : [...form.eventTypes, type]
+    updateAndSubmit({ eventTypes: newTypes })
+  }
+
+  const handleCertificateToggle = (cert) => {
+    const newCerts = form.certificate.includes(cert)
+      ? form.certificate.filter(c => c !== cert)
+      : [...form.certificate, cert]
+    updateAndSubmit({ certificate: newCerts })
+  }
+
+  const handleReset = () => {
+    const resetForm = {
+      searchTerm: '',
+      category: 'all',
+      targetAudience: '',
+      locations: [],
+      eventTypes: [],
+      certificate: [],
     }
+    setForm(resetForm)
+    onSubmit(resetForm)
+  }
+
+  const hasActiveFilters = form.searchTerm || form.category !== 'all' || form.locations.length > 0 || 
+    form.eventTypes.length > 0 || form.certificate.length > 0 || form.targetAudience
 
   return (
-    <div className="w-full flex flex-col gap-4">
-      <div className="w-full flex flex-col gap-4 items-start relative">
-        <FaSearch className="absolute left-3 top-3 text-gray-400" />
+    <div className="w-full">
+      <div className="w-full flex gap-2 mb-4 flex-wrap">
         <input
-          placeholder="Tìm kiếm sự kiện, trường đại học..."
-          className="w-[50%] bg-[#F9FAFB] rounded-lg p-2 pl-10 focus:outline-none"
+          type="text"
+          placeholder="Tìm kiếm sự kiện, trường..."
           value={form.searchTerm}
           onChange={handleSearchChange}
+          className="flex-1 min-w-[200px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5FA9F0] text-sm"
         />
-
-       <div
-       className='flex gap-4'
-       >
-       <div className="flex gap-2 items-center border p-2 rounded-lg font-medium">
-          <CiFilter className="font-medium" />
-          <button onClick={() => setHiddenFilter(!hiddenFilter)}>
-            {hiddenFilter ? 'Hiện bộ lọc' : 'Ẩn bộ lọc'}
+        <button
+          onClick={() => setShowAdvanced(!showAdvanced)}
+          className="px-4 py-2 border border-gray-300 bg-white hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors whitespace-nowrap"
+        >
+          {showAdvanced ? 'Ẩn bộ lọc' : 'Bộ lọc'}
+        </button>
+        {hasActiveFilters && (
+          <button
+            onClick={handleReset}
+            className="px-4 py-2 border border-gray-300 bg-white hover:bg-gray-50 rounded-lg text-sm font-medium text-red-600 transition-colors whitespace-nowrap"
+          >
+            Xóa lọc
           </button>
-        </div>
-        <div className="flex gap-2 items-center border p-2 rounded-lg font-medium curor-pointer">
-          <FaSearch  className="font-medium" />
-          <button onClick={handleSendFormFilter}>
-            Tìm kiếm
-          </button>
-        </div>
-       </div>
+        )}
       </div>
 
-      {!hiddenFilter && (
-        <div className="w-full flex flex-col border rounded-lg pl-8">
-          <div className="p-4 pt-4 pl-0 w-full">
+      <div className="w-full space-y-3 mb-4">
+        <div className="flex flex-wrap gap-2">
+          <div
+            onClick={() => handleCategoryChange('all')}
+            className={`px-3 py-1.5 rounded-full text-sm cursor-pointer transition-all font-medium ${
+              form.category === 'all'
+                ? 'bg-[#5FA9F0] text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+            }`}
+          >
+            Tất cả
+          </div>
+          {options.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => handleCategoryChange(item.name)}
+              className={`px-3 py-1.5 rounded-full text-sm cursor-pointer transition-all font-medium ${
+                form.category === item.name
+                  ? 'bg-[#5FA9F0] text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              {item.name}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {showAdvanced && (
+        <div className="w-full border border-gray-200 rounded-lg p-4 bg-gray-50 space-y-4">
+          {/* Đối tượng */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Đối tượng
+            </label>
             <Select
-              label="Đối tượng"
               options={objectOptions}
               value={form.targetAudience}
-              onChange={(value) => updateForm('targetAudience', value)}
+              onChange={handleAudienceChange}
               placeholder="Chọn đối tượng"
-              name="object"
-              className="w-[90%]"
+              name="audience"
+              className="w-full"
             />
           </div>
-          <p className='font-medium p-2 pl-0'>Địa điểm</p>
-          <div className='flex flex-wrap gap-4 p-4 pt-0 pl-0'>
-            {locationOptions.map((item, index) => (
-              <label
-                key={index}
-                className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
-              >
-                <input
-                  type="checkbox"
-                  checked={form.locations.includes(item)}
-                  onChange={() => handleLocationChange(item)}
-                  className="w-4 h-4 text-[#5FA9F0] bg-gray-100 border-gray-300 rounded focus:ring-[#5FA9F0] focus:ring-2"
-                />
-                <span className="text-sm font-medium text-gray-700">
-                  {item}
-                </span>
-              </label>
-            ))}
-            </div>
-          <p className="font-medium p-2 pl-0">Lĩnh vực</p>
-          <div className="flex items-center gap-4 flex-wrap p-4 pt-0 pl-0">
-            <div
-              key="all"
-              onClick={() => updateForm('category', 'all')}
-              className={`${
-                form.category === 'all' ? activeOptions : itemOptions
-              } border rounded-lg text-[16px] p-2 cursor-pointer`}
-            >
-              Tất cả
-            </div>
 
-            {options.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => updateForm('category', item.name)}
-                className={`${
-                  form.category === item.id ? activeOptions : itemOptions
-                } border rounded-lg text-[16px] p-2 cursor-pointer`}
-              >
-                {item.name}
-              </div>
-            ))}
-          </div>
-          <p className="font-medium p-2 pl-0">Hình thức sự kiện</p>
-          <div className="flex flex-wrap gap-4 p-4 pt-0 pl-0">
-            {optionsInterface.map((item, index) => (
-              <label
-                key={index}
-                className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
-              >
-                <input
-                  type="checkbox"
-                  checked={form.eventTypes.includes(item)}
-                  onChange={() => handleEventTypeChange(item)}
-                  className="w-4 h-4 text-[#5FA9F0] bg-gray-100 border-gray-300 rounded focus:ring-[#5FA9F0] focus:ring-2"
-                />
-                <span className="text-sm font-medium text-gray-700">
-                  {item}
-                </span>
-              </label>
-            ))}
-          </div>
-          
-          {/* Selected Event Types Display */}
-          {form.eventTypes.length > 0 && (
-            <div className="p-4 pt-0 pl-0">
-              <p className="text-sm font-medium text-gray-600 mb-2">
-                Đã chọn: {form.eventTypes.length} loại sự kiện
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {form.eventTypes.map((type, index) => (
-                  <span
-                    key={index}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-[#5FA9F0] text-white text-xs rounded-full"
-                  >
-                    {type}
-                    <button
-                      onClick={() => handleEventTypeChange(type)}
-                      className="ml-1 hover:bg-blue-600 rounded-full p-0.5"
-                    >
-                      ×
-                    </button>
-                  </span>
-                ))}
-              </div>
+          {/* Tất cả Địa điểm */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Tất cả địa điểm {form.locations.length > 0 && `(${form.locations.length} được chọn)`}
+            </label>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-[150px] overflow-y-auto pr-2">
+              {locationOptions.map((location) => (
+                <label
+                  key={location}
+                  className="flex items-center gap-2 cursor-pointer p-2 hover:bg-white rounded transition-colors"
+                >
+                  <input
+                    type="checkbox"
+                    checked={form.locations.includes(location)}
+                    onChange={() => handleLocationToggle(location)}
+                    className="w-4 h-4 text-[#5FA9F0] border-gray-300 rounded focus:ring-[#5FA9F0]"
+                  />
+                  <span className="text-sm text-gray-700">{location}</span>
+                </label>
+              ))}
             </div>
-          )}
-          <div
-          className='flex flex-col gap-2 p-4 pb-8'
-          >
-            <p>Bộ lọc khác</p>
-            <div
-            className='flex gap-2'
-            >
-            <input id='Free' type='checkbox' value='Free'
-            onChange={handleCertificateChange}
-            />
-            <label htmlFor='Free'>Sự kiện miễn phí</label>
+          </div>
+
+          {/* Hình thức sự kiện */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Hình thức sự kiện {form.eventTypes.length > 0 && `(${form.eventTypes.length} được chọn)`}
+            </label>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+              {eventTypeOptions.map((type) => (
+                <label
+                  key={type}
+                  className="flex items-center gap-2 cursor-pointer p-2 hover:bg-white rounded transition-colors"
+                >
+                  <input
+                    type="checkbox"
+                    checked={form.eventTypes.includes(type)}
+                    onChange={() => handleEventTypeToggle(type)}
+                    className="w-4 h-4 text-[#5FA9F0] border-gray-300 rounded focus:ring-[#5FA9F0]"
+                  />
+                  <span className="text-sm text-gray-700">{type}</span>
+                </label>
+              ))}
             </div>
-            <div
-            className='flex gap-2'>
-            <input id='sv5t' type='checkbox' value='Có chứng chỉ sinh viên 5 tốt'
-            onChange={handleCertificateChange} />
-            <label htmlFor='sv5t'>Có chứng chỉ sinh viên 5 tốt</label>
+          </div>
+
+          {/* Bộ lọc khác */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Bộ lọc khác
+            </label>
+            <div className="space-y-2">
+              {['Free', 'Có chứng chỉ sinh viên 5 tốt'].map((cert) => (
+                <label
+                  key={cert}
+                  className="flex items-center gap-2 cursor-pointer p-2 hover:bg-white rounded transition-colors"
+                >
+                  <input
+                    type="checkbox"
+                    checked={form.certificate.includes(cert)}
+                    onChange={() => handleCertificateToggle(cert)}
+                    className="w-4 h-4 text-[#5FA9F0] border-gray-300 rounded focus:ring-[#5FA9F0]"
+                  />
+                  <span className="text-sm text-gray-700">{cert}</span>
+                </label>
+              ))}
             </div>
           </div>
         </div>

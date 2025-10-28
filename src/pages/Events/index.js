@@ -32,9 +32,18 @@ export default function EventsPage() {
 
     const isEventTypeMatch =
       !formFilter.eventTypes?.length || formFilter.eventTypes.includes(eventType)
-      const isSchool =
-      !formFilter?.searchTerm || // nếu chưa nhập gì → luôn true
-      school?.toLowerCase().includes(formFilter.searchTerm.toLowerCase())    
+    
+    // Search: kiểm tra từ khóa trong tất cả các field liên quan
+    const searchTerm = formFilter?.searchTerm?.trim().toLowerCase() || ''
+    const isSearchMatch =
+      !searchTerm ||
+      school?.toLowerCase().includes(searchTerm) ||
+      category?.toLowerCase().includes(searchTerm) ||
+      eventType?.toLowerCase().includes(searchTerm) ||
+      address?.toLowerCase().includes(searchTerm) ||
+      benefits?.some(b => b?.toLowerCase().includes(searchTerm)) ||
+      aboutEvent?.toLowerCase().includes(searchTerm)
+    
     const isTargetAudienceMatch =
       !formFilter.targetAudience || formFilter.targetAudience === 'all' ||
       (formFilter.targetAudience === 'student' && (object === 'student' || object === 'university')) ||
@@ -49,7 +58,7 @@ export default function EventsPage() {
         if (certFilter === 'Có chứng chỉ sinh viên 5 tốt') {
           return (
             certificate?.toLowerCase().includes('5 tốt') ||
-            benefits?.some(b => b.toLowerCase().includes('5 tốt')) ||
+            benefits?.some(b => b?.toLowerCase().includes('5 tốt')) ||
             aboutEvent?.toLowerCase().includes('5 tốt')
           )
         }
@@ -58,17 +67,21 @@ export default function EventsPage() {
 
     const isLocationMatch =
       !formFilter.locations?.length ||
-      formFilter.locations.some(loc =>
-        address?.toLowerCase().includes(loc.toLowerCase()) ||
-        location?.toLowerCase().includes(loc.toLowerCase())
-      )
+      formFilter.locations.some(loc => {
+        const locLower = loc?.toLowerCase() || ''
+        return (
+          address?.toLowerCase().includes(locLower) ||
+          location?.toLowerCase().includes(locLower)
+        )
+      })
 
     return (
       isCategoryMatch &&
       isEventTypeMatch &&
       isTargetAudienceMatch &&
       isCertificateMatch &&
-      isLocationMatch && isSchool
+      isLocationMatch &&
+      isSearchMatch
     )
   }) : DetailEvents)
   console.log('filter',dataFiltered);
