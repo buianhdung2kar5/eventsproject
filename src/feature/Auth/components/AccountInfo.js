@@ -9,7 +9,7 @@ export default function AccountInfo() {
     <section className="flex flex-col justify-center items-center border rounded-lg gap-4 p-4">
       <div className="flex flex-col items-center gap-1">
         <img
-          src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.png'}
+          src={process.env.PUBLIC_URL + '/image/homePage/avatar.jpg'}
           alt="Ảnh Người Dùng"
           className="rounded-full h-24 w-24"
         />

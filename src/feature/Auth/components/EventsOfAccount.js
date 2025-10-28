@@ -35,7 +35,7 @@ export default function AboutEventsOfAccount() {
     },
   ]
   return (
-    <section className="w-full flex flex-wrap justify-center gap-y-4 gap-x-11 mx-auto">
+    <section className="w-full flex flex-wrap justify-center gap-y-4 gap-x-8 mx-auto">
       {data.map((item) => (
         <div
           key={item.id}
