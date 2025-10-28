@@ -43,13 +43,12 @@ export default function HomePage() {
       min-h-screen
       "
       >
-        <section id="logo">
           <img
-            src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.jpg'}
-            className="w-full h-auto"
+            src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.png'}
+            className="w-full block pb-0"
+            style={{ height: '250px', objectFit: 'cover', objectPosition: 'center' }}
           />
-        </section>
-
+        <br></br>
         <section
           id="events"
           className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[300px] border-b"
