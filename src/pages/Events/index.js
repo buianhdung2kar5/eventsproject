@@ -7,7 +7,6 @@ export default function EventsPage() {
   const [formFilter, setDataFormFilter] = useState(null)
 
   const handleSubmitFilter = (form) => {
-    console.log('forrm',form);
     setDataFormFilter(form)
     
   }

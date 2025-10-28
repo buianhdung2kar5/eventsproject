@@ -6,7 +6,10 @@ import PopUpConfirmRegister from '../../feature/homePage/PopUpConfirmRegister'
 import '../../style/global.css'
 import ListDataEvents from '../../components/Events/ListDataEvents'
 import AboutEventsWeb from '../../feature/AboutWeb/AboutEventsWeb'
+import { useNavigate } from 'react-router-dom'
+import { PATH } from '../../routes/path'
 export default function HomePage() {
+  const navigate = useNavigate()
   const dataStatistic = [
     {
       id: 1,
@@ -43,29 +46,29 @@ export default function HomePage() {
       min-h-screen
       "
       >
-         <div 
-  style={{ 
-    width: '100%', // Đặt chiều rộng bạn muốn hiển thị (ví dụ 300px)
-    height: '400px', // Đặt chiều cao bạn muốn hiển thị (ví dụ 100px)
-    overflow: 'hidden', // Ẩn đi phần ảnh bị tràn ra ngoài
-    margin: '0 0', 
-    // padding:'0 0'// Canh giữa (tùy chọn)
-  }}
-  className='p-0'
->
-    <img
-        src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.png'}
-        className="w-full block pb-0"
-        style={{ 
-            height: '450px', 
-            objectFit: 'cover', 
-            objectPosition: 'center',
-            // Căn chỉnh ảnh bên trong DIV để phần logo nằm ở trung tâm
-            // Bạn có thể cần dịch chuyển ảnh bằng translate() nếu nó quá lớn
-            // Ví dụ: transform: 'translateY(-100px)'
-        }}
-    />
-</div>
+        <div
+          style={{
+            width: '100%', // Đặt chiều rộng bạn muốn hiển thị (ví dụ 300px)
+            height: '400px', // Đặt chiều cao bạn muốn hiển thị (ví dụ 100px)
+            overflow: 'hidden', // Ẩn đi phần ảnh bị tràn ra ngoài
+            margin: '0 0',
+            // padding:'0 0'// Canh giữa (tùy chọn)
+          }}
+          className="p-0"
+        >
+          <img
+            src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.png'}
+            className="w-full block pb-0"
+            style={{
+              height: '450px',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              // Căn chỉnh ảnh bên trong DIV để phần logo nằm ở trung tâm
+              // Bạn có thể cần dịch chuyển ảnh bằng translate() nếu nó quá lớn
+              // Ví dụ: transform: 'translateY(-100px)'
+            }}
+          />
+        </div>
         <section
           id="events"
           className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[300px] border-b"
@@ -82,11 +85,17 @@ export default function HomePage() {
             <p> viên dành cho bạn Sự kiện sinh viên dành cho bạn</p>
           </div>
           <div className="flex gap-6">
-            <button className="border rounded-lg bg-[#5FA9F0] p-2  flex gap-1 items-center text-[white]">
+            <button
+              className="border rounded-lg bg-[#5FA9F0] p-2  flex gap-1 items-center text-[white]"
+              onClick={() => navigate(PATH.EVENTS)}
+            >
               <MdDateRange />
               <p>Khám phá sự kiện</p>
             </button>
-            <button className="border rounded-lg bg-[#fff] text-black p-2">
+            <button
+              className="border rounded-lg bg-[#fff] text-black p-2"
+              onClick={() => navigate(PATH.REGISTER)}
+            >
               Tạo tài khoản
             </button>
           </div>
