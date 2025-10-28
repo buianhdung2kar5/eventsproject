@@ -64,7 +64,7 @@ const CertificateLookup = () => {
         {/* Header Section */}
         <div className="flex flex-col items-center mb-12 text-center">
           <img
-            src={'image/certificateLookup/lookup.svg'}
+            src={process.env.PUBLIC_URL+ '/image/certificateLookup/lookup.svg'}
             alt="Biểu tượng tra cứu chứng chỉ"
             className="w-20 h-20 mb-6"
           />

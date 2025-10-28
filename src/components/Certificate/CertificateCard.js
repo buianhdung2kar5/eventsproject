@@ -57,7 +57,7 @@ export const CertificateCard = ({ certificate, onViewCertificate, onDownload }) 
                     </div>
                     <div className="flex items-start gap-2">
                         <img 
-                            src="image/certificateLookup/location.svg"
+                            src={process.env.PUBLIC_URL+ "/image/certificateLookup/location.svg"}
                             alt="Biểu tượng địa điểm"
                             className="w-5 h-5"
                         />
@@ -71,7 +71,7 @@ export const CertificateCard = ({ certificate, onViewCertificate, onDownload }) 
                 <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-start gap-2">
                         <img 
-                            src="image/certificateLookup/dateOfIssue.svg"
+                            src={process.env.PUBLIC_URL + "/image/certificateLookup/dateOfIssue.svg"}
                             alt="Biểu tượng ngày cấp"
                             className="w-5 h-5"
                         />
@@ -81,7 +81,7 @@ export const CertificateCard = ({ certificate, onViewCertificate, onDownload }) 
                     </div>
                     <div className="flex items-start gap-2">
                         <img 
-                            src="image/certificateLookup/organization.svg"
+                            src={process.env.PUBLIC_URL +"/image/certificateLookup/organization.svg"}
                             alt="Biểu tượng lịch"
                             className="w-5 h-5"
                         />
@@ -100,7 +100,7 @@ export const CertificateCard = ({ certificate, onViewCertificate, onDownload }) 
                     fullWidth={true}
                     icon={
                         <img 
-                            src="image/certificateLookup/viewCertificate.svg"
+                            src={process.env.PUBLIC_URL + "/image/certificateLookup/viewCertificate.svg"}
                             alt="Icon xem"
                             className="w-5 h-5"
                         />
@@ -113,7 +113,7 @@ export const CertificateCard = ({ certificate, onViewCertificate, onDownload }) 
                     fullWidth={true}
                     icon={
                         <img 
-                            src="image/certificateLookup/SV5T.svg"
+                            src={process.env.PUBLIC_URL+ "/image/certificateLookup/SV5T.svg"}
                             alt="Icon tải"
                             className="w-5 h-5 brightness-0"
                         />

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { CiFilter } from 'react-icons/ci'
 import { FaSearch } from 'react-icons/fa'
 import Select from '../../ui/Select'
-export default function SearchInput() {
+export default function SearchInput({onSubmit}) {
   const options = DataFilterOptions
   const itemOptions = 'text-[#090D00] bg-white'
   const activeOptions = 'bg-[#5FA9F0] text-white'
@@ -14,7 +14,8 @@ export default function SearchInput() {
     eventTypes: [],
     targetAudience: '',
     searchTerm: '',
-    locations: []
+    locations: [],
+    certificate:[],
   })
   
   const optionsInterface = [
@@ -78,9 +79,27 @@ const handleLocationChange = (location)=>{
     }
   })
 }
+const handleCertificateChange = (e) => {
+  const value = e.target.value
+  setForm(prev => {
+    const current = prev.certificate // Sử dụng tên trường 'certificate' đã định nghĩa trong state
+    
+    const newCerti = current.includes(value)
+      ? current.filter(cer => cer !== value) // Bỏ chọn
+      : [...current, value] // Thêm vào
+    
+    return {
+      ...prev,
+      certificate: newCerti // Cập nhật trường 'certificate'
+    }
+  })
+}
   const handleSearchChange = (e) => {
-    updateForm('searchText', e.target.value)
+    updateForm('searchTerm', e.target.value)
   }
+    const  handleSendFormFilter =() =>{
+    onSubmit(form)
+    }
 
   return (
     <div className="w-full flex flex-col gap-4">
@@ -93,12 +112,22 @@ const handleLocationChange = (location)=>{
           onChange={handleSearchChange}
         />
 
-        <div className="flex gap-2 items-center border p-2 rounded-lg font-medium">
+       <div
+       className='flex gap-4'
+       >
+       <div className="flex gap-2 items-center border p-2 rounded-lg font-medium">
           <CiFilter className="font-medium" />
           <button onClick={() => setHiddenFilter(!hiddenFilter)}>
             {hiddenFilter ? 'Hiện bộ lọc' : 'Ẩn bộ lọc'}
           </button>
         </div>
+        <div className="flex gap-2 items-center border p-2 rounded-lg font-medium curor-pointer">
+          <FaSearch  className="font-medium" />
+          <button onClick={handleSendFormFilter}>
+            Tìm kiếm
+          </button>
+        </div>
+       </div>
       </div>
 
       {!hiddenFilter && (
@@ -148,7 +177,7 @@ const handleLocationChange = (location)=>{
             {options.map((item) => (
               <div
                 key={item.id}
-                onClick={() => updateForm('category', item.id)}
+                onClick={() => updateForm('category', item.name)}
                 className={`${
                   form.category === item.id ? activeOptions : itemOptions
                 } border rounded-lg text-[16px] p-2 cursor-pointer`}
@@ -201,13 +230,24 @@ const handleLocationChange = (location)=>{
               </div>
             </div>
           )}
-
-          {/* Debug: Display current form state */}
-          <div className="p-4 pt-0 pl-0 bg-gray-50 rounded-lg">
-            <p className="text-sm font-medium text-gray-600 mb-2">Current Filter State:</p>
-            <pre className="text-xs text-gray-500 bg-white p-2 rounded border">
-              {JSON.stringify(form, null, 2)}
-            </pre>
+          <div
+          className='flex flex-col gap-2 p-4 pb-8'
+          >
+            <p>Bộ lọc khác</p>
+            <div
+            className='flex gap-2'
+            >
+            <input id='Free' type='checkbox' value='Free'
+            onChange={handleCertificateChange}
+            />
+            <label htmlFor='Free'>Sự kiện miễn phí</label>
+            </div>
+            <div
+            className='flex gap-2'>
+            <input id='sv5t' type='checkbox' value='Có chứng chỉ sinh viên 5 tốt'
+            onChange={handleCertificateChange} />
+            <label htmlFor='sv5t'>Có chứng chỉ sinh viên 5 tốt</label>
+            </div>
           </div>
         </div>
       )}
