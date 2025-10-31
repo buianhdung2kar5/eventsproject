@@ -2,6 +2,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../routes/path'
+import { CertificateModal } from '../../components/Certificate/CertificateModal'
+import { useState } from 'react'
+import { DetailEvents } from '../../data/events/DetailEvents'
 const PortfolioItem = ({
   id,
   title,
@@ -11,14 +14,20 @@ const PortfolioItem = ({
   date,
   views,
   downloads,
-
+  item,
+  handleDelete,
 }) => {
   const navigate = useNavigate()
+  console.log('tem', item)
+
+  const [viewCertificate, setViewCertificate] = useState(false)
   const statusClass =
     status === 'Đã xuất bản'
       ? 'bg-blue-100 text-blue-800'
       : 'bg-orange-100 text-orange-800'
-
+  const handleSeeCertificate = () => {
+    setViewCertificate(true)
+  }
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-4">
       <div className="flex justify-between items-start mb-2 flex-wrap">
@@ -132,8 +141,9 @@ const PortfolioItem = ({
 
       <div className="flex flex-wrap gap-2 text-sm">
         <button
+          key={item.id}
           className="flex items-center px-3 py-1 bg-gray-50 text-gray-700 rounded-md hover:bg-gray-100 transition-colors"
-          onClick={() => navigate(`${PATH.PORTFOLIO}/${1}`)}
+          onClick={handleSeeCertificate}
         >
           <svg
             className="w-4 h-4 mr-1"
@@ -225,7 +235,7 @@ const PortfolioItem = ({
         </button>
         <button
           className="flex items-center px-3 py-1 bg-gray-50 text-red-600 rounded-md hover:bg-gray-100 transition-colors"
-          //   onClick={handleDelete(id)}
+          onClick={handleDelete(item)}
         >
           <svg
             className="w-4 h-4 mr-1"
@@ -243,6 +253,14 @@ const PortfolioItem = ({
           </svg>
         </button>
       </div>
+      {viewCertificate && (
+        <CertificateModal
+          certificate={item?.items}
+          onClose={() => {
+            setViewCertificate(false)
+          }}
+        />
+      )}
     </div>
   )
 }

@@ -63,9 +63,6 @@ export default function HomePage() {
               height: '450px',
               objectFit: 'cover',
               objectPosition: 'center',
-              // Căn chỉnh ảnh bên trong DIV để phần logo nằm ở trung tâm
-              // Bạn có thể cần dịch chuyển ảnh bằng translate() nếu nó quá lớn
-              // Ví dụ: transform: 'translateY(-100px)'
             }}
           />
         </div>
