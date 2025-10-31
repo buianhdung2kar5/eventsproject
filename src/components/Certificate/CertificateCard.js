@@ -1,125 +1,93 @@
-import { Button } from "../../ui/Button"
+import { Button } from '../../ui/Button'
 
-export const CertificateCard = ({ certificate, onViewCertificate, onDownload }) => {
-    return (
-        <div className="bg-white border-2 border-dashed border-blue-400 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-            {/* Header: Icon + Title + Status */}
-            <div className="flex items-start justify-between mb-6">
-                <div className="flex items-center gap-3">
-                    <img 
-                        src={process.env.PUBLIC_URL+"/image/certificateLookup/SV5T.svg"}
-                        alt="Biểu tượng chứng chỉ"
-                        className="w-6 h-6"
-                    />
-                    <h3 className="font-semibold text-gray-800 text-lg">Chứng chỉ sinh viên 5 tốt</h3>
-                </div>
-                <span className="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full font-medium">
-                    Hợp lệ
-                </span>
-            </div>
-
-            {/* Certificate Code */}
-            <div className="mb-6">
-                <p className="text-sm text-gray-600">Mã: {certificate.id}</p>
-            </div>
-
-            {/* Certificate Details */}
-            <div className="space-y-4 mb-6">
-                {/* Sự kiện */}
-                <div>
-                    <p className="text-sm text-gray-600 mb-1">Sự kiện</p>
-                    <p className="font-medium text-gray-800">{certificate.eventName}</p>
-                </div>
-
-                {/* Sinh viên + MSSV (2 columns) */}
-                <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <p className="text-sm text-gray-600 mb-1">Sinh viên</p>
-                        <p className="font-medium text-gray-800">{certificate.studentName}</p>
-                    </div>
-                    <div>
-                        <p className="text-sm text-gray-600 mb-1">MSSV</p>
-                        <p className="font-medium text-gray-800">{certificate.studentId}</p>
-                    </div>
-                </div>
-
-                {/* Ngày sự kiện + Địa điểm (with icons) */}
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-start gap-2">
-                        <img 
-                            src={process.env.PUBLIC_URL+ "/image/certificateLookup/date.svg"}
-                            alt="Biểu tượng lịch"
-                            className="w-5 h-5"
-                        />
-                        <div>
-                            <p className="text-sm text-gray-600 mb-1">Ngày sự kiện: {certificate.issueDate}</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-2">
-                        <img 
-                            src={process.env.PUBLIC_URL+ "/image/certificateLookup/location.svg"}
-                            alt="Biểu tượng địa điểm"
-                            className="w-5 h-5"
-                        />
-                        <div>
-                            <p className="text-sm text-gray-600 mb-1">Địa điểm: {certificate.venue}</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Tổ chức + Ngày cấp (with icons) */}
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-start gap-2">
-                        <img 
-                            src={process.env.PUBLIC_URL + "/image/certificateLookup/dateOfIssue.svg"}
-                            alt="Biểu tượng ngày cấp"
-                            className="w-5 h-5"
-                        />
-                        <div>
-                            <p className="text-sm text-gray-600 mb-1">Ngày cấp: {certificate.completionDate}</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-2">
-                        <img 
-                            src={process.env.PUBLIC_URL +"/image/certificateLookup/organization.svg"}
-                            alt="Biểu tượng lịch"
-                            className="w-5 h-5"
-                        />
-                        <div>
-                            <p className="text-sm text-gray-600 mb-1">Tổ chức: {certificate.fieldOfStudy}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-3">
-                <Button
-                    name="Xem chứng chỉ"
-                    onClick={() => onViewCertificate(certificate)}
-                    fullWidth={true}
-                    icon={
-                        <img 
-                            src={process.env.PUBLIC_URL + "/image/certificateLookup/viewCertificate.svg"}
-                            alt="Icon xem"
-                            className="w-5 h-5"
-                        />
-                    }
-                />
-                <Button
-                    name="Tải xuống"
-                    variant="secondary"
-                    onClick={() => onDownload(certificate)}
-                    fullWidth={true}
-                    icon={
-                        <img 
-                            src={process.env.PUBLIC_URL+ "/image/certificateLookup/SV5T.svg"}
-                            alt="Icon tải"
-                            className="w-5 h-5 brightness-0"
-                        />
-                    }
-                />
-            </div>
+export const CertificateCard = ({
+  certificate,
+  onViewCertificate,
+  onDownload,
+}) => {
+  const labelTextColor = 'text-[#6B7280]'
+  return (
+    <div className="w-full border rounded-lg flex flex-col px-8 py-4 gap-4">
+      <div>
+        <div className="flex items-center">
+          <p className="">{certificate?.certificate}</p>
+          <p className="">{certificate.status}</p>
         </div>
-    )
+      </div>
+      {/* infor User */}
+      <div className={`${labelTextColor} text-xl pt-4`}>Danh sách sự kiện</div>
+      {certificate.map((item) => {
+        return (
+          <div key={item.id} className="flex flex-col gap-2 mt-4">
+            <div className="space-y-2">
+              <div className="flex items-start gap-2">
+                <p className="w-24 text-gray-600 text-sm">Sự kiện:</p>
+                <div className="text-[#C21313] text-sm font-medium">
+                  {item.eventName}
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2">
+                <p className="w-24 text-gray-600 text-sm">Ngày sự kiện:</p>
+                <div className="text-[#090D00] text-sm">{item.issueDate}</div>
+              </div>
+
+              <div className="flex items-start gap-2">
+                <p className="w-24 text-gray-600 text-sm">Địa điểm:</p>
+                <div className="text-[#090D00] text-sm">{item.venue}</div>
+              </div>
+
+              <div className="flex items-start gap-2">
+                <p className="w-24 text-gray-600 text-sm">Tổ chức:</p>
+                <div className="text-[#090D00] text-sm">
+                  {item.fieldOfStudy}
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2">
+                <p className="w-24 text-gray-600 text-sm">Ngày cấp:</p>
+                <div className="text-[#090D00] text-sm">
+                  {item.completionDate}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      })}
+      <div className="w-[95%] border h-[1px] mx-auto"></div>
+
+      <div className="flex gap-8">
+        {' '}
+        <Button
+          name="Xem chứng chỉ"
+          onClick={() => onViewCertificate(certificate)}
+          fullWidth={true}
+          icon={
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                '/image/certificateLookup/viewCertificate.svg'
+              }
+              alt="Icon xem"
+              className="w-5 h-5"
+            />
+          }
+          variant="primary"
+        />
+        <Button
+          name="Tải xuống"
+          variant="secondary"
+          onClick={() => onDownload(certificate)}
+          fullWidth={true}
+          icon={
+            <img
+              src={process.env.PUBLIC_URL + '/image/certificateLookup/SV5T.svg'}
+              alt="Icon tải"
+              className="w-5 h-5 brightness-0"
+            />
+          }
+        />
+      </div>
+    </div>
+  )
 }

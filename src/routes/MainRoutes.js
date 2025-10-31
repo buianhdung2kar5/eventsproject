@@ -17,5 +17,7 @@ export default function MainRoutes() {
     }
   })
   const element = useRoutes(currentsRouter)
+  console.log('element', element);
+  
   return element
 }

@@ -11,6 +11,7 @@ import Statistic from '../pages/PortFolio/Statistic/Statistic'
 import SeePortfolio from '../pages/PortFolio/SeePortfolio'
 import EditPortfolio from '../pages/PortFolio/EditPortfolio/EditPortfolio'
 import RankingPage from '../pages/Ranking'
+import PortfolioSaved from '../pages/PortFolio/PortfolioSaved/PortfolioSaved'
 export const PATH = {
   HOME: '/',
   EVENTS: '/events', // <--- Dùng cho trang danh sách
@@ -27,6 +28,7 @@ export const PATH = {
   STATISTICPORTFOLIO: '/statistic',
   EDITPORTFOLIO: '/portfolio/edit/:id',
   RANKING: '/ranking',
+  PORTFOLIOSAVED: '/lookup/portfolio',
 }
 export const pathElement = [
   //auth
@@ -61,4 +63,5 @@ export const pathElement = [
   { path: PATH.STATISTICPORTFOLIO, element: <Statistic /> },
   { path: PATH.PORTFOLIO_DETAIL, element: <SeePortfolio /> },
   { path: PATH.EDITPORTFOLIO, element: <EditPortfolio /> },
+  { path: PATH.PORTFOLIOSAVED, element: <PortfolioSaved /> },
 ]
