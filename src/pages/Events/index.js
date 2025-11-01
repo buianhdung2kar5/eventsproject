@@ -8,83 +8,90 @@ export default function EventsPage() {
 
   const handleSubmitFilter = (form) => {
     setDataFormFilter(form)
-    
   }
 
   // Nếu chưa có formFilter thì hiển thị tất cả
-  const dataFiltered = (formFilter ? DetailEvents.filter((item) => {
-    const {
-      category,
-      eventType,
-      object,
-      certificate,
-      address,
-      location,
-      price,
-      benefits,
-      aboutEvent,
-      school
-    } = item
+  const dataFiltered = formFilter
+    ? DetailEvents.filter((item) => {
+        const {
+          category,
+          eventType,
+          object,
+          certificate,
+          address,
+          location,
+          price,
+          benefits,
+          aboutEvent,
+          school,
+        } = item
 
-    const isCategoryMatch =
-      !formFilter.category || formFilter.category === 'all' || formFilter.category === category
+        const isCategoryMatch =
+          !formFilter.category ||
+          formFilter.category === 'all' ||
+          formFilter.category === category
 
-    const isEventTypeMatch =
-      !formFilter.eventTypes?.length || formFilter.eventTypes.includes(eventType)
-    
-    // Search: kiểm tra từ khóa trong tất cả các field liên quan
-    const searchTerm = formFilter?.searchTerm?.trim().toLowerCase() || ''
-    const isSearchMatch =
-      !searchTerm ||
-      school?.toLowerCase().includes(searchTerm) ||
-      category?.toLowerCase().includes(searchTerm) ||
-      eventType?.toLowerCase().includes(searchTerm) ||
-      address?.toLowerCase().includes(searchTerm) ||
-      benefits?.some(b => b?.toLowerCase().includes(searchTerm)) ||
-      aboutEvent?.toLowerCase().includes(searchTerm)
-    
-    const isTargetAudienceMatch =
-      !formFilter.targetAudience || formFilter.targetAudience === 'all' ||
-      (formFilter.targetAudience === 'student' && (object === 'student' || object === 'university')) ||
-      (formFilter.targetAudience === 'university' && object === 'university')
+        const isEventTypeMatch =
+          !formFilter.eventTypes?.length ||
+          formFilter.eventTypes.includes(eventType)
 
-    const isCertificateMatch =
-      !formFilter.certificate?.length ||
-      formFilter.certificate.some(certFilter => {
-        if (certFilter === 'Free') {
-          return price?.toLowerCase() === 'free' || price === '0'
-        }
-        if (certFilter === 'Có chứng chỉ sinh viên 5 tốt') {
-          return (
-            certificate?.toLowerCase().includes('5 tốt') ||
-            benefits?.some(b => b?.toLowerCase().includes('5 tốt')) ||
-            aboutEvent?.toLowerCase().includes('5 tốt')
-          )
-        }
-        return false
-      })
+        // Search: kiểm tra từ khóa trong tất cả các field liên quan
+        const searchTerm = formFilter?.searchTerm?.trim().toLowerCase() || ''
+        const isSearchMatch =
+          !searchTerm ||
+          school?.toLowerCase().includes(searchTerm) ||
+          category?.toLowerCase().includes(searchTerm) ||
+          eventType?.toLowerCase().includes(searchTerm) ||
+          address?.toLowerCase().includes(searchTerm) ||
+          benefits?.some((b) => b?.toLowerCase().includes(searchTerm)) ||
+          aboutEvent?.toLowerCase().includes(searchTerm)
 
-    const isLocationMatch =
-      !formFilter.locations?.length ||
-      formFilter.locations.some(loc => {
-        const locLower = loc?.toLowerCase() || ''
+        const isTargetAudienceMatch =
+          !formFilter.targetAudience ||
+          formFilter.targetAudience === 'all' ||
+          (formFilter.targetAudience === 'student' &&
+            (object === 'student' || object === 'university')) ||
+          (formFilter.targetAudience === 'university' &&
+            object === 'university')
+
+        const isCertificateMatch =
+          !formFilter.certificate?.length ||
+          formFilter.certificate.some((certFilter) => {
+            if (certFilter === 'Free') {
+              return price?.toLowerCase() === 'free' || price === '0'
+            }
+            if (certFilter === 'Có chứng chỉ sinh viên 5 tốt') {
+              return (
+                certificate?.toLowerCase().includes('5 tốt') ||
+                benefits?.some((b) => b?.toLowerCase().includes('5 tốt')) ||
+                aboutEvent?.toLowerCase().includes('5 tốt')
+              )
+            }
+            return false
+          })
+
+        const isLocationMatch =
+          !formFilter.locations?.length ||
+          formFilter.locations.some((loc) => {
+            const locLower = loc?.toLowerCase() || ''
+            return (
+              address?.toLowerCase().includes(locLower) ||
+              location?.toLowerCase().includes(locLower)
+            )
+          })
+
         return (
-          address?.toLowerCase().includes(locLower) ||
-          location?.toLowerCase().includes(locLower)
+          isCategoryMatch &&
+          isEventTypeMatch &&
+          isTargetAudienceMatch &&
+          isCertificateMatch &&
+          isLocationMatch &&
+          isSearchMatch
         )
       })
+    : DetailEvents
+  console.log('filter', dataFiltered)
 
-    return (
-      isCategoryMatch &&
-      isEventTypeMatch &&
-      isTargetAudienceMatch &&
-      isCertificateMatch &&
-      isLocationMatch &&
-      isSearchMatch
-    )
-  }) : DetailEvents)
-  console.log('filter',dataFiltered);
-  
   return (
     <div
       className="w-full mx-auto flex flex-col items-center px-[2%] py-[clamp(2rem,4vh,3rem)]"

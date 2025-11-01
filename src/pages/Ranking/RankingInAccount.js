@@ -9,8 +9,8 @@ const RankingInAccount = ({
   points = 450,
   rank = 'Top 15%',
   level = 'Lv.4',
-  currentProgress = 50,
-  maxProgress = 100,
+  currentProgress = 450,
+  maxProgress = 500,
 }) => {
   const progressPercent = (currentProgress / maxProgress) * 100
   const pointsNeeded = maxProgress - currentProgress
@@ -52,8 +52,17 @@ const RankingInAccount = ({
       {/* Progress Section */}
       <div>
         {/* Header Row */}
-        <div className="flex justify-between items-center mb-2">
+        <div className="flex justify-between items-center mb-2 relative">
           <span className="text-sm font-medium">Tiến độ lên cấp</span>
+          <span className="flex absolute left-28 bg-purple-100 text-[14px] border rounded-full px-2 text-purple-700">
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                '/image/rankingPage/badgeIconlv2Small.svg'
+              }
+            />
+            <p>Thợ săn</p>
+          </span>
           <div className="flex items-center space-x-3">
             <span className="text-sm font-medium">
               {currentProgress}/{maxProgress} điểm

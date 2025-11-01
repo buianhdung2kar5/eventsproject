@@ -29,8 +29,8 @@ export const achievementData = [
   {
     id: 1,
     icon: '/image/rankingPage/icon1.svg',
-    title: 'Tham gia sự kiện',
-    points: '+30 điểm/sự kiện',
+    title: 'Đọc tin tức',
+    points: '+10 điểm/sự kiện',
   },
   {
     id: 2,
@@ -40,12 +40,6 @@ export const achievementData = [
   },
   {
     id: 3,
-    icon: '/image/rankingPage/icon3.svg',
-    title: 'Nhận chứng chỉ SV 5 tốt',
-    points: '+100 điểm/chứng chỉ',
-  },
-  {
-    id: 4,
     icon: '/image/rankingPage/icon4.svg',
     title: 'Tạo Portfolio',
     points: '+20 điểm/portfolio',

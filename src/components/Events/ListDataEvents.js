@@ -12,15 +12,16 @@ import { DetailEvents } from '../../data/events/DetailEvents'
 import { useState } from 'react'
 export default function ListDataEvents({ data }) {
   const navigate = useNavigate()
-  const dataEvent = data
-    ? dataEvents.filter((item) => data.some((d) => d.id === item.id))
-    : dataEvents
+  // const dataEvent = data
+  //   ? dataEvents.filter((item) => data.some((d) => d.id === item.id))
+  //   : dataEvents
+  const dataEvent = data ? data : dataEvents
   const viewDetail = (id) => {
     navigate(`${PATH.EVENTS}/${id}`)
   }
   return (
     <div className="grid grid-cols-3 justify-items-stretch align-items-center w-full gap-y-8 gap-x-8 line-clamp-2">
-      {dataEvent.map((item) => {
+      {dataEvent?.map((item) => {
         return (
           <div
             key={item.id}

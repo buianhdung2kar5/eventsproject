@@ -234,8 +234,9 @@ const PortfolioItem = ({
           Chỉnh sửa
         </button>
         <button
+          type="button"
           className="flex items-center px-3 py-1 bg-gray-50 text-red-600 rounded-md hover:bg-gray-100 transition-colors"
-          onClick={handleDelete(item)}
+          onClick={handleDelete}
         >
           <svg
             className="w-4 h-4 mr-1"

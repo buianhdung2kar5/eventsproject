@@ -68,18 +68,12 @@ export default function HomePage() {
         </div>
         <section
           id="events"
-          className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[300px] border-b"
+          className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[250px] border-b"
         >
-          <div className="flex flex-col items-center justify-center text-[16px] text-[#090D00]">
-            <p>Sự kiện sinh viên </p>
-            <p>Dành cho bạn</p>
-          </div>
           <div className="text-[#6B7280] text-[16px] flex flex-col items-center justify-center">
-            <p>
-              Sự kiện sinh viên dành cho bạn Sự kiện sinh viên dành cho bạn Sự
-              kiện sinh viên dành cho bạn Sự kiện sinh
+            <p className="text-3xl font-medium text-black">
+              𝓢𝓮𝓪𝓻𝓬𝓱 𝓵𝓮𝓼𝓼 - 𝓯𝓲𝓷𝓭 𝓶𝓸𝓻𝓮 𝔀𝓲𝓽𝓱 𝓔𝓿𝓮𝓷𝓽𝓼
             </p>
-            <p> viên dành cho bạn Sự kiện sinh viên dành cho bạn</p>
           </div>
           <div className="flex gap-6">
             <button

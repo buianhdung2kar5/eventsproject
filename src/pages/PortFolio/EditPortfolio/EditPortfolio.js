@@ -34,8 +34,7 @@ const mockData = {
   ],
   status: 'Đã xuất bản',
   visibility: 'Công khai',
-  shareLink:
-    'https://7c6c8f71-5601-4288-9b28-30eead0c11a0c-figmaiframepreview.figma.site/p/nguyen-van-a-marketing-2025',
+  shareLink: 'Events',
   activities: [
     {
       id: 1,
