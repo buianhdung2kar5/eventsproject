@@ -71,8 +71,38 @@ export default function HomePage() {
           className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[250px] border-b"
         >
           <div className="text-[#6B7280] text-[16px] flex flex-col items-center justify-center">
-            <p className="text-3xl font-medium text-black">
-              𝓢𝓮𝓪𝓻𝓬𝓱 𝓵𝓮𝓼𝓼 - 𝓯𝓲𝓷𝓭 𝓶𝓸𝓻𝓮 𝔀𝓲𝓽𝓱 𝓔𝓿𝓮𝓷𝓽𝓼
+            <p className="text-3xl font-medium text-black flex flex-wrap gap-1">
+              {'SEARCH LESS - FIND MORE WITH EVENTS'
+                .split('')
+                .map((char, index) => (
+                  <span
+                    key={index}
+                    style={{
+                      display: 'inline-block',
+                      opacity: 0,
+                      transform: 'translateY(20px)',
+                      animation: `fadeUp 0.5s ease-out forwards`,
+                      animationDelay: `${index * 0.05}s`,
+                    }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                ))}
+
+              <style>
+                {`
+        @keyframes fadeUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}
+              </style>
             </p>
           </div>
           <div className="flex gap-6">
