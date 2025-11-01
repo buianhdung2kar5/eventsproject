@@ -59,7 +59,7 @@ export const CertificateCard = ({
       <div className="flex gap-8">
         {' '}
         <Button
-          name="Xem chứng chỉ"
+          name="Xem hồ sơ"
           onClick={() => onViewCertificate(certificate)}
           fullWidth={true}
           icon={

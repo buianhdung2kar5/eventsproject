@@ -28,11 +28,11 @@ export const certificateMockData = [
 export const lookupGuideData = {
   title: 'Hướng dẫn tra cứu',
   items: [
-    'Mỗi chứng chỉ được gắn một mã duy nhất email bạn khi hoàn thành sự kiện',
-    'Bạn có thể tra cứu bằng mã chứng chỉ này để xác minh tính hợp lệ của chứng chỉ',
-    'Kết quả nhận chứng chỉ, nhập các yêu cầu mã cách nhau bởi dấu phẩy',
-    'Chứng chỉ có thể tải về dưới định dạng PDF và in ra trực tiếp nếu cần',
-    'Thử mã demo: Events123',
+    'Mỗi hồ sơ được gắn một mã duy nhất email bạn khi hoàn thành sự kiện',
+    'Bạn có thể tra cứu bằng mã hồ sơ này để xác minh tính hợp lệ của hồ sơ',
+    'Kết quả nhận hồ sơ, nhập các yêu cầu mã cách nhau bởi dấu phẩy',
+    'Hồ sơ có thể tải về dưới định dạng PDF và in ra trực tiếp nếu cần',
+    'Thử mã demo: Events',
   ],
 }
 
@@ -40,11 +40,11 @@ export const certificateSections = [
   {
     id: 'section1',
     title: 'Mô tra cứu',
-    description: 'Tra nhiều chứng chỉ bằng cách nhập đầy phẩy giữa các mã',
+    description: 'Tra nhiều hồ sơ bằng cách nhập đầy phẩy giữa các mã',
   },
   {
     id: 'section2',
-    title: 'Mã chứng chỉ hoặc mã sự kiện',
-    description: 'Events123\nCó thể nhập nhiều mã cách nhau bởi dấu phẩy',
+    title: 'Mã hồ sơ hoặc mã sự kiện',
+    description: 'Events\nCó thể nhập nhiều mã cách nhau bởi dấu phẩy',
   },
 ]

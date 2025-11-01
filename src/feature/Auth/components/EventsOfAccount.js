@@ -14,7 +14,7 @@ export default function AboutEventsOfAccount() {
     },
     {
       id: 2,
-      name: 'Chứng chỉ',
+      name: 'Hồ sơ',
       number: 5,
       attributeText: '5/10 so với mục tiêu năm học',
       icon: <PiMedalDuotone />,
@@ -35,7 +35,7 @@ export default function AboutEventsOfAccount() {
     },
   ]
   return (
-    <section className="w-full flex flex-wrap justify-center gap-y-4 gap-x-8 mx-auto">
+    <section className="w-full flex flex-wrap justify-center gap-y-4 gap-x-6 mx-auto">
       {data.map((item) => (
         <div
           key={item.id}

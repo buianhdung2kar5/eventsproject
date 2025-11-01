@@ -5,7 +5,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
 
   const handleDownloadPDF = () => {
     console.log('📄 Tải xuống PDF:', certificate.id)
-    alert('Đang tải xuống chứng chỉ PDF...')
+    alert('Đang tải xuống hồ sơ PDF...')
   }
 
   const handlePrint = () => {
@@ -46,7 +46,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
           <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex justify-between items-center no-print">
-            <h2 className="text-xl font-bold text-gray-800">Xem chứng chỉ</h2>
+            <h2 className="text-xl font-bold text-gray-800">Xem hồ sơ</h2>
             <button
               onClick={onClose}
               className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
@@ -146,11 +146,19 @@ export const CertificateModal = ({ certificate, onClose }) => {
                   </div>
                   <div className="pt-6 border-gray-200">
                     <p className="text-gray-600 mb-2">
-                      Ngày cấp:{new Date().getTime()}
+                      Ngày cấp:{' '}
+                      {(() => {
+                        const date = new Date()
+                        const hh = String(date.getHours()).padStart(2, '0')
+                        const mm = String(date.getMinutes()).padStart(2, '0')
+                        const dd = String(date.getDate()).padStart(2, '0')
+                        const MM = String(date.getMonth() + 1).padStart(2, '0')
+                        const yyyy = date.getFullYear()
+                        return `${hh}:${mm} - ${dd}/${MM}/${yyyy}`
+                      })()}
                     </p>
-                    <p className="text-sm text-gray-500">
-                      Mã chứng chỉ: 11236082
-                    </p>
+
+                    <p className="text-sm text-gray-500">Mã hồ sơ: 11236082</p>
                   </div>
                 </div>
               </div>
@@ -175,7 +183,7 @@ export const CertificateModal = ({ certificate, onClose }) => {
               />
 
               <Button
-                name="In chứng chỉ"
+                name="In hồ sơ"
                 onClick={() => handlePrint()}
                 variant="secondary"
                 fullWidth={true}

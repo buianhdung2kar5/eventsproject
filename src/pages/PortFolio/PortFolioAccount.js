@@ -81,18 +81,17 @@ const PortfolioManagerPage = () => {
       } catch {}
     }
   }, [])
-  const handleDelete = (item) => {
-    const data = localStorage.getItem(combinedDataKey)
-    const dataParsed = data ? JSON.parse(data) : null
-    const dataFiltered = dataParsed
-      ? dataParsed?.filter((data) => {
-          return data.id !== item.id
-        })
-      : []
-    console.log('Dataa', dataFiltered)
-
-    localStorage.setItem(combinedDataKey, JSON.stringify(dataFiltered))
-    // window.location.reload()
+  const handleDelete = () => {
+    // const data = localStorage.getItem(combinedDataKey)
+    // const dataParsed = data ? JSON.parse(data) : null
+    // const dataFiltered = dataParsed
+    //   ? dataParsed?.filter((data) => {
+    //       return data.id !== item.id
+    //     })
+    //   : []
+    // localStorage.setItem(combinedDataKey, JSON.stringify(dataFiltered))
+    // // window.location.reload()
+    alert('Tính năng đang dược phát triển')
   }
   return (
     <div className="min-h-screen p-4 sm:p-6 lg:p-8 w-[60%] mx-auto">
