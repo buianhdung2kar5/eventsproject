@@ -68,11 +68,11 @@ export default function HomePage() {
         </div>
         <section
           id="events"
-          className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[250px] border-b"
+          className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[200px] border-b"
         >
           <div className="text-[#6B7280] text-[16px] flex flex-col items-center justify-center">
-            <p className="text-3xl font-medium text-black flex flex-wrap gap-1">
-              {'SEARCH LESS - FIND MORE WITH EVENTS'
+            <p className="text-xl font-medium text-black flex flex-wrap italic">
+              {'Search less - Find more with EVENTS'
                 .split('')
                 .map((char, index) => (
                   <span
