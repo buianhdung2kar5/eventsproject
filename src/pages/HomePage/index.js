@@ -73,6 +73,7 @@ export default function HomePage() {
           <div className="text-[#6B7280] text-[16px] flex flex-col items-center justify-center">
             <p className="text-xl font-medium text-black flex flex-wrap italic">
               {'Search less - Find more with EVENTS'
+
                 .split('')
                 .map((char, index) => (
                   <span
