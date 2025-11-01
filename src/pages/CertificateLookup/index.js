@@ -66,6 +66,7 @@ const CertificateLookup = () => {
     alert('Đang tải xuống hồ sơ PDF...')
   }
 
+
   const handleClick = (e) => {
     setIsActiveButton(e.target.id)
   }
