@@ -77,14 +77,14 @@ export default function EventsPage() {
               location?.toLowerCase().includes(locLower)
             )
           })
-        const arrayPrice = formFilter.price.map((p) =>
+        const arrayPrice = formFilter?.price?.map((p) =>
           p.split('-').map((x) => x.trim())
         )
 
-        const cutPrice = arrayPrice.map((p) =>
+        const cutPrice = arrayPrice?.map((p) =>
           p.map((x) => Number(x.replace(/[^\d]/g, '')))
         )
-        const isPriceMatch = !formFilter.price?.length
+        const isPriceMatch = !formFilter?.price?.length
           ? true
           : Number(price?.toString().replace(/[^\d]/g, '')) === 0
           ? formFilter.price.includes('Miễn phí')
