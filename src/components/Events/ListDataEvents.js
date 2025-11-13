@@ -20,7 +20,7 @@ export default function ListDataEvents({ data }) {
     navigate(`${PATH.EVENTS}/${id}`)
   }
   return (
-    <div className="grid grid-cols-3 justify-items-stretch align-items-center w-full gap-y-8 gap-x-8 line-clamp-2">
+    <div className="grid grid-cols-3 justify-items-stretch align-items-center w-full gap-y-8 gap-x-8 line-clamp-2 p-4">
       {dataEvent?.map((item) => {
         return (
           <div

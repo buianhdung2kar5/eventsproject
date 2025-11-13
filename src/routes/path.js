@@ -12,6 +12,7 @@ import SeePortfolio from '../pages/PortFolio/SeePortfolio'
 import EditPortfolio from '../pages/PortFolio/EditPortfolio/EditPortfolio'
 import RankingPage from '../pages/Ranking'
 import PortfolioSaved from '../pages/PortFolio/PortfolioSaved/PortfolioSaved'
+import HomePageOganization from '../pages/HomePage/indexOganization'
 export const PATH = {
   HOME: '/',
   EVENTS: '/events', // <--- Dùng cho trang danh sách
@@ -30,6 +31,7 @@ export const PATH = {
   RANKING: '/ranking',
   PORTFOLIOSAVED: '/lookup/portfolio',
 }
+export const isOganization = localStorage.getItem('isOrganization')
 export const pathElement = [
   //auth
   {
@@ -50,7 +52,7 @@ export const pathElement = [
       />
     ),
   },
-  { path: PATH.HOME, element: <HomePage /> },
+  { path: PATH.HOME, element: isOganization ? <c /> : <HomePage /> },
   { path: PATH.EVENTS, element: <EventsPage /> },
   { path: PATH.NEWS, element: <News /> },
   { path: PATH.CONTACT, element: <ContactPage /> },
