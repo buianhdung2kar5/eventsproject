@@ -7,7 +7,7 @@ import { PATH } from '../../routes/path'
 const fuseOptions = {
   keys: ['name', 'category', 'address', 'organization', 'description'], // Thêm 'description' nếu có
   includeScore: true,
-  threshold: 0.8, // Tăng độ "mờ"
+  threshold: 0.6, // Tăng độ "mờ"
   ignoreLocation: true, // Không quan tâm vị trí (Hà Nội vs. sự kiện ở Hà Nội)
 }
 const fuse = new Fuse(dataEvents, fuseOptions)
@@ -18,7 +18,7 @@ const personaReplies = {
   greeting: 'Ooh, Sóc Nhỏ chào bạn! Bạn muốn tìm sự kiện gì nè? 🐿️',
   noResult:
     "Ui, Sóc Nhỏ tìm hông thấy sự kiện nào giống vậy rùi. Bạn thử gõ (ví dụ: 'Hà Nội', 'Công nghệ') xem sao nha!",
-  foundPrefix: 'Aha! Sóc Nhỏ tìm thấy một vài sự kiện hay ho nè:',
+  foundPrefix: 'Aha! Sóc Nhỏ tìm thấy một vài sự kiện hay ho dành cho bạn nè:',
   foundSuffix: 'Bạn có muốn Sóc Nhỏ kể chi tiết hơn về sự kiện nào không?',
   error: 'Ôi, Sóc Nhỏ bị lỗi gì đó mất rùi... Bạn F5 lại thử xem T.T',
 }
@@ -172,7 +172,7 @@ export default function ChatWidget() {
                     <div className="text-sm">{m.text}</div>
                   ) : (
                     <div className="text-sm">
-                      <div>{m.text}</div>
+                      <div className="mb-2">{m.text}</div>
                       {m?.events?.map((e) => (
                         <div key={e.id} className="mb-3">
                           <img
