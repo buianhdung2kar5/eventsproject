@@ -32,9 +32,14 @@ export default function SearchInput({ onSubmit }) {
       name: 'Lĩnh vực',
       key: 'category',
       options: [
-        { id: 1, label: 'Công nghệ thông tin' },
-        { id: 2, label: 'Kinh tế' },
-        { id: 3, label: 'Xã hội học' },
+        { id: 1, label: 'Công nghệ' },
+        { id: 2, label: 'Kinh doanh' },
+        { id: 3, label: 'Giáo dục' },
+        { id: 4, label: 'Y tế' },
+        { id: 5, label: 'Thiết kế' },
+        { id: 6, label: 'An ninh mạng' },
+        { id: 7, label: 'Môi trường' },
+        { id: 8, label: 'Tài chính' },
       ],
     },
     {
