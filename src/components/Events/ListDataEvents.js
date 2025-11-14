@@ -7,9 +7,6 @@ import '../../style/global.css'
 import { dataEvents } from '../../data/events/events'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../routes/path'
-import { useParams } from 'react-router-dom'
-import { DetailEvents } from '../../data/events/DetailEvents'
-import { useState } from 'react'
 export default function ListDataEvents({ data }) {
   const navigate = useNavigate()
   // const dataEvent = data
