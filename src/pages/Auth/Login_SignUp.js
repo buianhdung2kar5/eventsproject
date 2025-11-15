@@ -28,7 +28,7 @@ export const LoginSignUp = ({ type, onClose }) => {
       const newUser = {
         username: formData.username,
         password: formData.password,
-        role: 'user',
+        role: formData.role,
       }
       localStorage.setItem('userInfo', JSON.stringify(newUser))
       alert('Đăng ký thành công!')
@@ -133,7 +133,7 @@ export const LoginSignUp = ({ type, onClose }) => {
             />
             <i className="bx bxs-lock-alt"></i>
           </div>
-          <div className="input-box">
+          <div className="input-box mb-0">
             <input
               type="password"
               name="confirmpassword"
@@ -142,6 +142,34 @@ export const LoginSignUp = ({ type, onClose }) => {
               onChange={handleChange}
             />
             <i className="bx bxs-lock-alt"></i>
+          </div>
+          <div className="relative flex flex-col">
+            <span className="absolute top-0 left-0 text-sm text-red-600">
+              *
+            </span>
+            <span className="flex items-start pt-2 pb-1 pl-1">
+              Chọn vai trò:
+            </span>
+            <div className="flex flex-col gap-1 items-start">
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  value="user"
+                  onChange={handleChange}
+                  name="role"
+                />
+                <span>Người dùng</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  value="organization"
+                  name="role"
+                  onChange={handleChange}
+                />
+                <span>Tổ chức</span>
+              </div>
+            </div>
           </div>
           <button type="submit" className="btn">
             Register

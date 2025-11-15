@@ -8,6 +8,12 @@ import ListDataEvents from '../../components/Events/ListDataEvents'
 import AboutEventsWeb from '../../feature/AboutWeb/AboutEventsWeb'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../routes/path'
+import { GoPeople } from 'react-icons/go'
+import { LiaCertificateSolid } from 'react-icons/lia'
+import { FaArrowTrendUp } from 'react-icons/fa6'
+import { Input } from '../../ui/Input'
+import { CiSearch } from 'react-icons/ci'
+
 export default function HomePage() {
   const navigate = useNavigate()
   const dataStatistic = [
@@ -19,19 +25,19 @@ export default function HomePage() {
     },
     {
       id: 2,
-      icon: <MdDateRange size="32px" />,
+      icon: <GoPeople size="32px" />,
       number: '10,000+',
       name: 'sinh viên tham gia',
     },
     {
       id: 3,
-      icon: <MdDateRange size="32px" />,
+      icon: <LiaCertificateSolid size="32px" />,
       number: '50+',
       name: 'Trường ĐH',
     },
     {
       id: 4,
-      icon: <MdDateRange size="32px" />,
+      icon: <FaArrowTrendUp size="32px" />,
       number: '95%',
       name: 'Đánh giá',
     },
@@ -40,38 +46,69 @@ export default function HomePage() {
   const DataOptionsFilter = DataFilterOptions
   return (
     <>
-      <div
-        className="
-      w-full
-      min-h-screen
-      "
-      >
-        <div
-          style={{
-            width: '100%', // Đặt chiều rộng bạn muốn hiển thị (ví dụ 300px)
-            height: '400px', // Đặt chiều cao bạn muốn hiển thị (ví dụ 100px)
-            overflow: 'hidden', // Ẩn đi phần ảnh bị tràn ra ngoài
-            margin: '0 0',
-            // padding:'0 0'// Canh giữa (tùy chọn)
-          }}
-          className="p-0"
-        >
-          <img
-            src={process.env.PUBLIC_URL + '/image/homePage/LogoHomePage.png'}
-            className="w-full block pb-0"
-            style={{
-              height: '450px',
-              objectFit: 'cover',
-              objectPosition: 'center',
-            }}
-          />
-        </div>
+      <div className="w-full min-h-screen">
         <section
           id="events"
-          className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[200px] border-b"
+          className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[580px] border-b"
         >
+          <p className="text-3xl font-medium text-black flex flex-wrap italic">
+            {'Search less - Find more with EVENTS'
+              .split('')
+              .map((char, index) => (
+                <span
+                  key={index}
+                  style={{
+                    display: 'inline-block',
+                    opacity: 0,
+                    transform: 'translateY(20px)',
+                    animation: `fadeUp 0.5s ease-out forwards`,
+                    animationDelay: `${index * 0.05}s`,
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+
+            <style>
+              {`
+        @keyframes fadeUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}
+            </style>
+          </p>
+          <div className="flex flex-col items-center justify-center text-[#5FA9F0] text-7xl font-poppins">
+            <p>Khám phá sự kiện</p>
+            <p>Kết nối tương lai</p>
+          </div>
+          <div className="flex flex-col items-center justify-center text-[#6B7280] text-lg">
+            <p>Tham gia hàng nghìn sự kiện từ các trường đại học hàng đầu.</p>
+            <p>Tích lũy chứng chỉ sinh viên 5 tốt và phát triển bản thân!</p>
+          </div>
+          <div className="w-[40%] relative">
+            {/* Icon search */}
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl">
+              <CiSearch />
+            </div>
+
+            {/* Input container */}
+            <div className="bg-white shadow-lg shadow-gray-300/30 rounded-full">
+              <input
+                className="w-full pl-12 pr-4 py-3 rounded-full focus:outline-none text-gray-700 placeholder-gray-400"
+                placeholder="Tìm kiếm sự kiện, trường đại học, lĩnh vực..."
+              />
+            </div>
+          </div>
+
           <div className="text-[#6B7280] text-[16px] flex flex-col items-center justify-center">
-            <p className="text-xl font-medium text-black flex flex-wrap italic">
+            {/* <p className="text-xl font-medium text-black flex flex-wrap italic">
               {'Search less - Find more with EVENTS'
                 .split('')
                 .map((char, index) => (
@@ -103,7 +140,7 @@ export default function HomePage() {
         }
       `}
               </style>
-            </p>
+            </p> */}
           </div>
           <div className="flex gap-6">
             <button
@@ -125,10 +162,18 @@ export default function HomePage() {
           id="statistic"
           className="flex gap-32 items-center w-full justify-center bg-white p-8"
         >
-          {dataStatistic.map((item) => {
+          {dataStatistic.map((item, index) => {
             return (
               <div key={item.id} className="flex flex-col items-center p-2">
-                <div className="text-[#5FA9F0]">{item.icon}</div>
+                <div
+                  className={
+                    index % 2 !== 0
+                      ? `text-[#F05A25] bg-[#F05A25]/10 p-4 rounded-full`
+                      : `text-[#5FA9F0] bg-[#5FA9F0]/10 p-4 rounded-full`
+                  }
+                >
+                  {item.icon}
+                </div>
                 <p className="">{item.number}</p>
                 <p>{item.name}</p>
               </div>
@@ -149,7 +194,10 @@ export default function HomePage() {
           <div className="w-[60%]">
             <ListDataEvents />
           </div>
-          <button className="border rounded-lg bg-white p-4 font-medium text-[16px]">
+          <button
+            className="border rounded-lg bg-white p-4 font-medium text-[16px]"
+            onClick={() => navigate(PATH.EVENTS)}
+          >
             Xem tất cả sự kiện
           </button>
         </section>

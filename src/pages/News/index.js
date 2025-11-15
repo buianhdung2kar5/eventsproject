@@ -20,7 +20,7 @@ export default function News() {
         </p>
         <div className="grid grid-cols-3 gap-x-16 gap-y-8 p-4 px-0">
           {News.map((item) => {
-            return <NewsCard item={item} />
+            return <NewsCard item={item} key={item.id} />
           })}
         </div>
       </div>

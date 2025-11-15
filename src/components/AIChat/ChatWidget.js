@@ -122,10 +122,17 @@ export default function ChatWidget() {
 
       {open && (
         <div className="mt-3 w-[380px] h-[520px] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden transform transition-all duration-200">
-          <div className="px-4 py-3 bg-gradient-to-r from-indigo-600 to-cyan-500 text-white flex items-center justify-between">
+          <div
+            className="px-4 py-3 bg-[#71AAF1]
+ text-white flex items-center justify-between"
+          >
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
-                <span className="text-lg">🤖</span>
+              <div className="w-8 h-8  flex items-center justify-center overflow-hidden">
+                <span className="text-lg">
+                  <img
+                    src={process.env.PUBLIC_URL + '/image/AI/aiAvartar.png'}
+                  />
+                </span>
               </div>
               <div className="font-medium text-sm">Trợ lý sự kiện</div>
             </div>
@@ -153,8 +160,14 @@ export default function ChatWidget() {
               >
                 {m.from === 'bot' && (
                   <div className="mr-2 flex-shrink-0">
-                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-200">
-                      <span className="text-sm">🤖</span>
+                    <div className="w-8 h-8 flex items-center justify-center border-slate-200">
+                      <span className="text-sm">
+                        <img
+                          src={
+                            process.env.PUBLIC_URL + '/image/AI/aiAvartar.png'
+                          }
+                        />
+                      </span>
                     </div>
                   </div>
                 )}
@@ -222,7 +235,7 @@ export default function ChatWidget() {
               <button
                 onClick={handleSend}
                 disabled={loading}
-                className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm disabled:opacity-60 flex items-center gap-2"
+                className="bg-[#71AAF1] text-white px-4 py-2 rounded-md text-sm disabled:opacity-60 flex items-center gap-2"
               >
                 {loading ? (
                   '...'
