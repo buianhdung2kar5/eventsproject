@@ -58,9 +58,9 @@ export default function ListDataEvents({ data }) {
                 </p>
               </div>
               <div className="ml-2 text-[16px] line-clamp-1">{item.name}</div>
-              <div className="ml-2 flex  gap-1 items-center text-[#6B7280] text-[14px] ">
-                <VscOrganization />
-                <p>{item.organization}</p>
+              <div className="ml-2 flex gap-1 items-center text-[#6B7280] text-[14px]">
+                <VscOrganization className="min-w-4" />
+                <p className="truncate">{item.organization}</p>
               </div>
               <div className="ml-2 flex gap-1 items-center text-[#6B7280] text-[14px]">
                 <MdOutlineDateRange size="14px" />
@@ -72,7 +72,7 @@ export default function ListDataEvents({ data }) {
                 <GiPositionMarker size="14px" />
                 <p className="text-14px">{item.address}</p>
               </div>
-              <div className="ml-2 flex gap-1 items-center text-[14px] text-[#6B7280] text-[14px]">
+              <div className="ml-2 flex gap-1 items-center text-[14px] text-[#6B7280]">
                 <IoMdPeople />
                 <p>
                   {item.memberResgiter}/{item.slots} người đăng ký
