@@ -5,6 +5,10 @@ import { DetailEvents } from '../../data/events/DetailEvents'
 import { Input } from '../../ui/Input'
 export default function EventsPage() {
   const [formFilter, setDataFormFilter] = useState(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 9
+  const startItem = (currentPage - 1) * itemsPerPage
+  const endItem = startItem + itemsPerPage
   const handleSubmitFilter = (form) => {
     setDataFormFilter(form)
   }
@@ -15,7 +19,6 @@ export default function EventsPage() {
       searchTerm: value,
     }))
   }
-  console.log('form', formFilter)
 
   const dataFiltered = formFilter
     ? DetailEvents.filter((item) => {
@@ -112,7 +115,14 @@ export default function EventsPage() {
         )
       })
     : DetailEvents
-
+  const totalPage =
+    dataFiltered?.length > itemsPerPage
+      ? Math.ceil(dataFiltered?.length / itemsPerPage)
+      : 1
+  const dataPerPage = dataFiltered.slice(startItem, endItem)
+  const handleActivePage = (index) => {
+    setCurrentPage(index)
+  }
   return (
     <div
       className="w-full mx-auto flex flex-col items-center px-[2%] py-[clamp(1.5rem,2.5vh,2.5rem)]"
@@ -148,7 +158,7 @@ export default function EventsPage() {
               onChange={handleSearchChange}
             />
             {dataFiltered.length > 0 ? (
-              <ListDataEvents data={dataFiltered} />
+              <ListDataEvents data={dataPerPage} />
             ) : (
               <div className="text-center text-gray-500 mt-8 w-full">
                 Không tìm thấy sự kiện phù hợp.
@@ -156,6 +166,20 @@ export default function EventsPage() {
             )}
           </div>
         </div>
+      </div>
+      <div className="flex gap-4 items-center justify-center w-full">
+        {Array.from({ length: totalPage }, (_, i) => i + 1).map((page) => (
+          <button
+            key={page}
+            value={page}
+            onClick={() => handleActivePage(page)}
+            className={`border-0 rounded-full px-3 py-1 flex items-center ${
+              Number(page) === Number(currentPage) ? `bg-[#5FA9F0]` : `bg-white`
+            }`}
+          >
+            {page}
+          </button>
+        ))}
       </div>
     </div>
   )
