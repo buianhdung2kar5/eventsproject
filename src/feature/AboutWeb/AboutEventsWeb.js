@@ -76,7 +76,7 @@ border rounded-2xl shadow-sm hover:shadow-lg p-8 transition-all duration-500 gro
       </div>
 
       {/* Giá trị cốt lõi */}
-      <h3 className="text-xl font-semibold mb-8">Giá trị cốt lõi</h3>
+      <h3 className="text-2xl font-semibold mb-8">Giá trị cốt lõi</h3>
       <div className="flex flex-wrap justify-center gap-6 p-4">
         {' '}
         {/* Sửa lỗi: Dùng Flexbox và justify-center */}

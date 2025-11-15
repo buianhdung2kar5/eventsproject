@@ -160,7 +160,7 @@ export default function HomePage() {
         </section>
         <section
           id="statistic"
-          className="flex gap-32 items-center w-full justify-center bg-white p-8"
+          className="flex gap-32 items-center w-full justify-center bg-white p-16"
         >
           {dataStatistic.map((item, index) => {
             return (
@@ -182,11 +182,11 @@ export default function HomePage() {
         </section>
         <section
           id="outstandingEvents"
-          className="bg-white flex flex-col justify-center items-center gap-4 w-full pb-28"
+          className="bg-white flex flex-col justify-center items-center gap-4 w-full pb-24 border-b"
         >
           <div className="flex flex-col items-center justify-center gap-2 border-t  w-full">
-            <p className="font-bold p-2">Sự kiện nổi bật</p>
-            <p className="p-2 text-[#6B7280]">
+            <p className="font-bold p-2 text-2xl pt-16">Sự kiện nổi bật</p>
+            <p className="p-2 text-[#6B7280] pt-0">
               Khám phá những sự kiện được quan tâm nhiều nhất trong thời gian
               tới
             </p>
