@@ -7,7 +7,7 @@ import { FaHandshakeSimple } from 'react-icons/fa6'
 export default function AboutEventsWeb() {
   const dataTop = [
     {
-      icon: <LuTarget className="text-3xl text-[#5FA9F0]" />,
+      icon: <LuTarget className="text-3xl text-[#5FA9F0] " />,
       title: 'Sứ mệnh',
       desc: 'Cung cấp hệ sinh thái sự kiện giáo dục toàn diện, chất lượng, chi tiết và xác thực - Vì sự phát triển toàn diện của thế hệ trẻ.',
     },
@@ -60,7 +60,8 @@ export default function AboutEventsWeb() {
         {dataTop.map((item, index) => (
           <div
             key={index}
-            className="relative bg-white border rounded-2xl shadow-sm hover:shadow-lg p-8 transition-all duration-500 group overflow-hidden"
+            className="relative bg-gradient-to-br from-[#fa43010d_10%] via-white to-[#FFFEFE00]
+border rounded-2xl shadow-sm hover:shadow-lg p-8 transition-all duration-500 group overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 animate-shine"></div>
             <div className="relative z-10 flex flex-col items-center">
@@ -86,7 +87,9 @@ export default function AboutEventsWeb() {
             // 33.333% là 1/3, trừ đi gap (giả sử gap-6 là 1.5rem ~ 24px) để đảm bảo 3 item vừa vặn.
             // Lưu ý: Giá trị 16px là ước tính cho việc căn chỉnh, bạn có thể cần điều chỉnh nhẹ
             // hoặc dùng chiều rộng flex-basis/grow/shrink thay thế, nhưng calc là cách đơn giản nhất.
-            className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] relative bg-white border rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 p-8 transition-all duration-500 group overflow-hidden"
+            className={`w-full sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] relative ${
+              index % 2 == 0 ? 'bg-gradient-to-bl' : 'bg-gradient-to-br'
+            } from-[#fa43010d_10%] via-white to-[#FFFEFE00] border rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 p-8 transition-all duration-500 group overflow-hidden`}
           >
             {/* Hiệu ứng Shine (có thể cần thêm keyframes CSS ngoài) */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 animate-shine"></div>

@@ -4,8 +4,21 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Proxima Nova', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
-        'proxima': ['Proxima Nova', 'Inter', 'sans-serif'],
+        sans: [
+          'Proxima Nova',
+          'Inter',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'Noto Sans',
+          'sans-serif',
+        ],
+        proxima: ['Proxima Nova', 'Inter', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
     },
   },
