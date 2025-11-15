@@ -18,8 +18,6 @@ const PortfolioItem = ({
   handleDelete,
 }) => {
   const navigate = useNavigate()
-  console.log('tem', item)
-
   const [viewCertificate, setViewCertificate] = useState(false)
   const statusClass =
     status === 'Đã xuất bản'
@@ -27,6 +25,18 @@ const PortfolioItem = ({
       : 'bg-orange-100 text-orange-800'
   const handleSeeCertificate = () => {
     setViewCertificate(true)
+  }
+  const handleCopy = async () => {
+    try {
+      // Nếu dòng này thực thi xong mà không có lỗi (error),
+      // có nghĩa là việc sao chép đã thành công.
+      await navigator.clipboard.writeText('EVENTS')
+      alert('Copy thành công!')
+    } catch (error) {
+      // Nếu có lỗi (Promise bị rejected), code sẽ nhảy vào đây
+      console.error('Lỗi khi sao chép:', error)
+      alert('Copy thất bại! Vui lòng kiểm tra console.')
+    }
   }
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-4">
@@ -169,7 +179,7 @@ const PortfolioItem = ({
         </button>
         <button
           className="flex items-center px-3 py-1 bg-gray-50 text-gray-700 rounded-md hover:bg-gray-100 transition-colors"
-          onClick={() => console.log(`Sao chép link ${title}`)}
+          onClick={handleCopy}
         >
           <svg
             className="w-4 h-4 mr-1"
