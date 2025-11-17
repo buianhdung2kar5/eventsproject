@@ -1,10 +1,16 @@
 import { FiUserPlus } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom'
+import { PATH } from '../../../routes/path'
 export default function AccountInfo() {
+  const navigate = useNavigate()
   const data = localStorage.getItem('userInfo')
   const dataUser = data
     ? JSON.parse(data)
     : localStorage.getItem('UserNamePasword')
   const dataUserParsed = data ? dataUser : JSON.parse(dataUser)
+  const handleEditAccount = () => {
+    navigate(PATH.PORTFOLIO)
+  }
   return (
     <section className="flex flex-col justify-center items-center border rounded-lg gap-4 p-4">
       <div className="flex flex-col items-center gap-1">
@@ -33,7 +39,7 @@ export default function AccountInfo() {
       </div>
       <button className="w-[90%] flex items-center gap-4 p-1 justify-center border rounded-[10px]">
         <FiUserPlus />
-        <p>Chỉnh sửa hồ sơ</p>
+        <p onClick={handleEditAccount}>Chỉnh sửa hồ sơ</p>
       </button>
     </section>
   )

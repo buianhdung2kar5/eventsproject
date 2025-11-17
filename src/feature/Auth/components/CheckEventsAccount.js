@@ -115,10 +115,9 @@ export default function CheckEventsAccount() {
               </p>
             </div>
             <div className="flex gap-2">
-              <button className="absolute right-24  border rounded-lg px-4 py-2 text-center">
+              <button className="absolute right-6 border rounded-lg px-4 py-2 text-center">
                 Bỏ chọn tất cả
               </button>
-              <MdQrCode2 className="w-8 h-8 text-[#5FA9F0] absolute right-8 mt-1" />
             </div>
           </div>
           {isSelected?.length ? (

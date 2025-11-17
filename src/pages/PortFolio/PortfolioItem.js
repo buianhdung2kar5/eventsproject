@@ -38,6 +38,21 @@ const PortfolioItem = ({
       alert('Copy thất bại! Vui lòng kiểm tra console.')
     }
   }
+  const handleEditPorfolio = () => {
+    console.log('item', item)
+
+    const data = localStorage.getItem('UserNamePasword')
+      ? JSON.parse(localStorage.getItem('UserNamePasword'))
+      : {}
+    localStorage.setItem(
+      'editPortpolio',
+      JSON.stringify({
+        username: data.username,
+        event: item.title,
+      })
+    )
+    navigate(PATH.EDITPORTFOLIO.replace(':id', id))
+  }
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-4">
       <div className="flex justify-between items-start mb-2 flex-wrap">
@@ -225,7 +240,7 @@ const PortfolioItem = ({
         </button>
         <button
           className="flex items-center px-3 py-1 bg-gray-50 text-gray-700 rounded-md hover:bg-gray-100 transition-colors"
-          onClick={() => navigate(PATH.EDITPORTFOLIO.replace(':id', id))}
+          onClick={handleEditPorfolio}
         >
           <svg
             className="w-4 h-4 mr-1"

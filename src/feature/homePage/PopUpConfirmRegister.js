@@ -7,7 +7,7 @@ const PopUpConfirmRegister = () => {
   }
   return (
     <div className="flex flex-col items-center justify-center bg-[#5FA9F0] gap-4 w-[60%] border rounded-lg mx-auto p-4 h-full ">
-      <p className="text-white text-[16px]">Sẵn sàng tham gia ?</p>
+      <p className="text-white text-3xl">Sẵn sàng tham gia ?</p>
       <p className="text-white text-[16px]">
         Đăng ký ngay để không bỏ lỡ những sự kiện sinh viên thú vị, tích lũy các
         chứng chỉ và mở rộng kết nối

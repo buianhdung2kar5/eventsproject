@@ -142,7 +142,7 @@ export default function SearchInput({ onSubmit }) {
       key: 'locations',
       options: [
         { id: 1, label: 'Hà Nội' },
-        { id: 2, label: 'TP. Hồ Chí Minh' },
+        { id: 2, label: 'Hồ Chí Minh' },
       ],
     },
     {
@@ -364,15 +364,15 @@ export default function SearchInput({ onSubmit }) {
                 .map((opt) => (
                   <label
                     key={opt.id}
-                    className="flex items-center gap-2 cursor-pointer px-2 hover:bg-white rounded transition-colors"
+                    className="flex gap-2 cursor-pointer px-2 hover:bg-white rounded transition-colors"
                   >
                     <input
                       type="checkbox"
                       checked={form[group.key]?.includes(opt.label)}
                       onChange={() => handleOptionToggle(group.key, opt.label)}
-                      className="w-4 h-4 min-w-4 text-[#5FA9F0] border-gray-300 rounded focus:ring-[#5FA9F0]"
+                      className="w-4 h-4 mt-0.5 min-w-4 text-[#5FA9F0] border-gray-300 rounded focus:ring-[#5FA9F0]"
                     />
-                    <span className="text-sm text-gray-700 ">{opt.label}</span>
+                    <span className="text-sm text-gray-700">{opt.label}</span>
                   </label>
                 ))
                 .slice(0, group.key === 'school' ? 10 : group.options.length)}

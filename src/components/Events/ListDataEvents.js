@@ -36,12 +36,9 @@ export default function ListDataEvents({ data }) {
                 alt={item.name}
               />
               <div className="absolute top-3 right-3 flex items-center justify-center bg-[#EC5D2B] border-0 rounded-lg">
-                <p className="text-white p-1">
-                  <PiCertificateBold size="12px" />
-                </p>
                 <p
                   className="
-                              text-white p-1 pl-0  text-[12px]
+                              text-white p-1 text-[12px]
                             "
                 >
                   {item.certificate}

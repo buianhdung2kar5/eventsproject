@@ -22,8 +22,11 @@ import {
 } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../../routes/path'
+const dataUser = localStorage.getItem('editPortpolio')
+  ? JSON.parse(localStorage.getItem('editPortpolio'))
+  : {}
 const mockData = {
-  title: 'Nguyễn Văn A – Sự kiện công nghệ 2025',
+  title: `${dataUser.username} - ${dataUser.event}`,
   description:
     'Hồ sơ tổng hợp các hoạt động và sự kiện tham gia liên quan đến Công nghệ',
   summary: [
@@ -42,7 +45,7 @@ const mockData = {
       completedDate: '5/12/2025',
       tags: [
         {
-          label: 'Chứng chỉ SV 5 tốt',
+          label: 'Fill tiêu chí SV 5 tốt',
           color: 'bg-yellow-100 text-yellow-800',
           icon: FaCheck,
         },
@@ -70,7 +73,7 @@ const mockData = {
       completedDate: '28/11/2025',
       tags: [
         {
-          label: 'Chứng chỉ SV 5 tốt',
+          label: 'Fill tiêu chí SV 5 tốt',
           color: 'bg-yellow-100 text-yellow-800',
           icon: FaCheck,
         },
@@ -239,7 +242,10 @@ export default function EditPortfolio({ portfolioData = mockData }) {
           <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 border rounded-lg hover:bg-gray-200 transition">
             <FaChartBar className="w-4 h-4 mr-2" /> Thống kê
           </button>
-          <button className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 border rounded-lg hover:bg-gray-200 transition">
+          <button
+            className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 border rounded-lg hover:bg-gray-200 transition"
+            onClick={() => navigate(PATH.EDITACCOUNT)}
+          >
             <FaEdit className="w-4 h-4 mr-2" /> Chỉnh sửa
           </button>
           <button className="flex items-center px-4 py-2 bg-gray-100 text-red-600 border rounded-lg hover:bg-red-50 transition">

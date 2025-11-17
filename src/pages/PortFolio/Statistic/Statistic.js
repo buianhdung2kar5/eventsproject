@@ -15,7 +15,7 @@ const Statistic = ({ profileData, chartData }) => {
     lastView: '15:15:00 27/10/2025',
     returnRate: '32.4',
     averageDaily: 2.9,
-    title: 'Nguyễn Văn A – Sự kiện công nghệ',
+    title: 'Admin - Sự Kiện Công Nghệ',
     status: 'Đã xuất bản',
   }
 

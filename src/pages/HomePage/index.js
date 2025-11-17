@@ -90,7 +90,7 @@ export default function HomePage() {
           </div>
           <div className="flex flex-col items-center justify-center text-[#6B7280] text-lg">
             <p>Tham gia hàng nghìn sự kiện từ các trường đại học hàng đầu.</p>
-            <p>Tích lũy chứng chỉ sinh viên 5 tốt và phát triển bản thân!</p>
+            <p>Tích lũy hồ sơ sinh viên 5 tốt và phát triển bản thân!</p>
           </div>
           <div className="w-[40%] relative">
             {/* Icon search */}
