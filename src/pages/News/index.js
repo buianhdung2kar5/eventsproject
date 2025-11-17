@@ -5,7 +5,7 @@ export default function News() {
   const News = dataNews
   return (
     <section className="w-full flex flex-col items-center mt-8">
-      <div className="w-[60%] flex flex-col gap-4">
+      <div className="w-[70%] flex flex-col gap-4">
         <h1
           className="text-[#090D00] text-center font-bold"
           style={{ fontSize: 'clamp(1.5rem,3vw,2.5rem)' }}
@@ -18,7 +18,7 @@ export default function News() {
         >
           Cập nhật những tin tức mới nhất về các sự kiện và hoạt động
         </p>
-        <div className="grid grid-cols-3 gap-x-16 gap-y-8 p-4 px-0">
+        <div className="grid grid-cols-3 gap-x-8 gap-y-8 p-4 px-0">
           {News.map((item) => {
             return <NewsCard item={item} key={item.id} />
           })}

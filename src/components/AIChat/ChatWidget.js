@@ -116,7 +116,9 @@ export default function ChatWidget() {
           onClick={() => setOpen(true)}
           className="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-600 to-cyan-500 shadow-lg flex items-center justify-center text-white transition-transform hover:scale-105"
         >
-          <span className="text-2xl">💬</span>
+          <span className="text-2xl p-2">
+            <img src={process.env.PUBLIC_URL + '/image/AI/aiAvartar.png'} />
+          </span>
         </button>
       )}
 

@@ -13,6 +13,7 @@ import EditPortfolio from '../pages/PortFolio/EditPortfolio/EditPortfolio'
 import RankingPage from '../pages/Ranking'
 import PortfolioSaved from '../pages/PortFolio/PortfolioSaved/PortfolioSaved'
 import HomePageOganization from '../pages/HomePage/indexOganization'
+import EDITACCOUNT from '../pages/Auth/EditAccount'
 export const PATH = {
   HOME: '/',
   EVENTS: '/events', // <--- Dùng cho trang danh sách
@@ -30,6 +31,7 @@ export const PATH = {
   EDITPORTFOLIO: '/portfolio/edit/:id',
   RANKING: '/ranking',
   PORTFOLIOSAVED: '/lookup/portfolio',
+  EDITACCOUNT: '/account/edit',
 }
 export const isOganization = localStorage.getItem('isOrganization')
 export const pathElement = [
@@ -66,4 +68,5 @@ export const pathElement = [
   { path: PATH.PORTFOLIO_DETAIL, element: <SeePortfolio /> },
   { path: PATH.EDITPORTFOLIO, element: <EditPortfolio /> },
   { path: PATH.PORTFOLIOSAVED, element: <PortfolioSaved /> },
+  { path: PATH.EDITACCOUNT, element: <EDITACCOUNT /> },
 ]

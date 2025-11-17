@@ -15,7 +15,7 @@ const StatisticSection = ({ data }) => {
     },
     {
       icon: FaUser,
-      title: 'Người xem duy nhất',
+      title: 'Người xem',
       value: data.uniqueViewers,
       color: 'text-green-600',
     },
@@ -35,7 +35,7 @@ const StatisticSection = ({ data }) => {
   ]
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+    <div className="flex flex-wrap gap-4 p-4 justify-around">
       {stats.map((stat, index) => (
         <StatisticCard
           key={index}

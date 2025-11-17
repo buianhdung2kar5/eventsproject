@@ -5,7 +5,7 @@ import React from 'react'
 
 const StatisticCard = ({ icon: Icon, title, value, unit, color }) => {
   return (
-    <div className="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 min-w-[200px]">
+    <div className="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 w-[200px] h-[70px]">
       <div className={`p-3 rounded-full ${color} bg-opacity-10 mr-4`}>
         <Icon className={`text-2xl ${color}`} />
       </div>
