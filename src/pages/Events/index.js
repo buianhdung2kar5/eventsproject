@@ -3,10 +3,13 @@ import SearchInput from '../../components/function/SearchInput'
 import ListDataEvents from '../../components/Events/ListDataEvents'
 import { DetailEvents } from '../../data/events/DetailEvents'
 import { Input } from '../../ui/Input'
+import { CiFilter } from 'react-icons/ci'
+
 export default function EventsPage() {
   const [formFilter, setDataFormFilter] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 9
+  const [showFilterBox, setShowFilterBox] = useState(false)
+  const itemsPerPage = 12
   const startItem = (currentPage - 1) * itemsPerPage
   const endItem = startItem + itemsPerPage
   const handleSubmitFilter = (form) => {
@@ -90,19 +93,12 @@ export default function EventsPage() {
         const isPriceMatch = !formFilter?.price?.length
           ? true
           : Number(price?.toString().replace(/[^\d]/g, '')) === 0
-          ? formFilter.price.includes('Miễn phí')
-          : cutPrice.some(
-              ([min, max]) =>
-                Number(price?.toString().replace(/[^\d]/g, '')) >= min &&
-                Number(price?.toString().replace(/[^\d]/g, '')) <= max
-            )
-
-        // console.log('iscate', isCategoryMatch)
-        // console.log('isevent', isEventTypeMatch)
-        // console.log('ista', isTargetAudienceMatch)
-        // console.log('iscert', isCertificateMatch)
-        // console.log('isloc', isLocationMatch)
-        // console.log('issearch', isSearchMatch)
+            ? formFilter.price.includes('Miễn phí')
+            : cutPrice.some(
+                ([min, max]) =>
+                  Number(price?.toString().replace(/[^\d]/g, '')) >= min &&
+                  Number(price?.toString().replace(/[^\d]/g, '')) <= max
+              )
         return (
           isCategoryMatch &&
           isEventTypeMatch &&
@@ -129,7 +125,7 @@ export default function EventsPage() {
       style={{ gap: 'clamp(1rem,2vw,1.5rem)' }}
     >
       <div
-        className="w-full sm:w-[90%] flex flex-col items-center"
+        className="w-full sm:w-[90%] flex flex-col items-start"
         style={{ gap: 'clamp(0.5rem,1vw,1rem)' }}
       >
         {/* Tiêu đề */}
@@ -147,16 +143,39 @@ export default function EventsPage() {
           Khám phá và đăng ký tham gia các sự kiện từ các trường đại học
         </p>
         <div className="flex gap-4 w-full">
-          <div className="w-[20%] bg-white border rounded-lg p-4 shadow-md mt-2">
+          {/* <div className="w-[20%] bg-white border rounded-lg p-4 shadow-md mt-2">
             <SearchInput onSubmit={handleSubmitFilter} />
-          </div>
+          </div> */}
           {/* Danh sách sự kiện */}
           <div className="flex-1 flex flex-col gap-4">
-            <Input
-              placeholder={'Tìm kiếm sự kiện, trường đại học...'}
-              value={formFilter?.searchTerm}
-              onChange={handleSearchChange}
-            />
+            {/* khu vực filter */}
+            <div className="flex gap-2 w-full items-center px-4">
+              <div className="w-[80%]">
+                <Input
+                  placeholder={'Tìm kiếm sự kiện, trường đại học...'}
+                  value={formFilter?.searchTerm}
+                  onChange={handleSearchChange}
+                />
+              </div>
+              <button
+                className="w-[7%] border px-4 py-2 rounded-2xl bg-white border-gray-300 flex gap-1 items-center justify-between"
+                onClick={() => setShowFilterBox(!showFilterBox)}
+              >
+                <label htmlFor="filter">
+                  <CiFilter />
+                </label>
+                <p id="filter">Bộ lọc</p>
+              </button>
+              <select className="flex-1 border px-4  py-2 rounded-2xl bg-white border-gray-300">
+                <option>Mới nhất</option>
+                <option>Hot nhất</option>
+              </select>
+            </div>
+            {showFilterBox && (
+              <div className="w-full p-4 mt-2">
+                <SearchInput onSubmit={handleSubmitFilter} />
+              </div>
+            )}
             {dataFiltered.length > 0 ? (
               <ListDataEvents data={dataPerPage} />
             ) : (

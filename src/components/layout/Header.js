@@ -15,15 +15,13 @@ export default function Header() {
 
   const [logined, setLogined] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-
-  // Thêm ref để xác định click ngoài menu
   const menuRef = useRef(null)
 
   const customNavCss = {
     default:
       'px-[1%] py-[0.5%] mx-[0.5%] my-[0.5%] font-bold cursor-pointer hover:text-blue-300 transform transition-all duration-300 hover:-translate-y-1 h-fit text-[clamp(0.75rem,1.5vw,1rem)]',
     active:
-      'px-[1%] py-[0.5%] mx-[0.5%] my-[0.5%] font-bold text-[#5FA9F0] cursor-pointer transform transition-all duration-300 hover:-translate-y-1 h-fit text-[clamp(0.75rem,1.5vw,1rem)]',
+      'px-[1%] py-[0.5%] mx-[0.5%] my-[0.5%] font-bold text-[#06B6D4] cursor-pointer transform transition-all duration-300 hover:-translate-y-1 h-fit text-[clamp(0.75rem,1.5vw,1rem)]',
   }
 
   const handleClick = (id) => {
@@ -41,16 +39,13 @@ export default function Header() {
     localStorage.removeItem('userInfo')
     setLogined(false)
   }
-
-  // Kiểm tra login
   useEffect(() => {
-    const checkLogin = localStorage.getItem('userInfo')
-    const isLogin = checkLogin ? true : localStorage.getItem('UserNamePasword')
-    const isLogined = isLogin ? true : false
-    if (isLogined) setLogined(true)
+    const hasLogined = () => {
+      setLogined(true)
+    }
+    window.addEventListener('user-login', hasLogined)
+    return () => window.removeEventListener('user-login', hasLogined)
   }, [])
-
-  // 🔥 Tự đóng menu khi click ra ngoài
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -87,6 +82,7 @@ export default function Header() {
           {[
             { id: '/', label: 'Trang chủ' },
             { id: '/events', label: 'Sự kiện' },
+            { id: '/job', label: 'Việc làm' },
             { id: '/news', label: 'Tin tức' },
             { id: '/lookup', label: 'Tra cứu' },
             { id: '/contact', label: 'Liên hệ' },

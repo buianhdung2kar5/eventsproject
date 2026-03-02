@@ -16,7 +16,6 @@ export default function SearchInput({ onSubmit }) {
   }
   const [form, setForm] = useState(initForm)
   const [searchDataSchool, setSearchDataSchool] = useState('')
-  // JSON bậc 2 chứa các tiêu chí và option
   const [filterGroups, setFilterGroups] = useState([
     {
       id: 0,
@@ -292,7 +291,7 @@ export default function SearchInput({ onSubmit }) {
     )
   }
 
-  const [openGroups, setOpenGroups] = useState({}) // lưu trạng thái mở/đóng từng tiêu chí
+  const [openGroups, setOpenGroups] = useState({})
   const updateAndSubmit = useCallback(
     (updates) => {
       const newForm = { ...form, ...updates }
@@ -312,53 +311,55 @@ export default function SearchInput({ onSubmit }) {
       : [...current, value]
     updateAndSubmit({ [key]: updated })
   }
-
+  const handleClearFilter = () => {
+    setForm(initForm)
+    setSearchDataSchool('')
+    setFilterGroups((prev) =>
+      prev.map((group) =>
+        group.key === 'school' ? { ...group, options: dataFake.options } : group
+      )
+    )
+    setOpenGroups({})
+    onSubmit(initForm)
+  }
   return (
-    <div className="w-full">
-      <div className="w-full flex gap-2 items-center">
-        <FaSlidersH />
-        <p>Bộ lọc</p>
-      </div>
-      <div className="w-full space-y-1 mb-4">
-        {/* Render tất cả nhóm tiêu chí */}
-        {filterGroups.map((group) => (
-          <div key={group.id} className="flex flex-col gap-1">
-            {/* Tiêu đề tiêu chí (dropdown) */}
-            <div className="flex flex-col justify-center">
-              <div className="flex items-center">
-                <div
-                  onClick={() => toggleGroup(group.key)}
-                  className={`py-1.5 pl-0 pr-1 rounded-full text-sm cursor-pointer transition-all font-medium ${
-                    openGroups[group.key]
-                      ? 'text-[#5FA9F0]'
-                      : 'text-gray-700 hover:text-[#5FA9F0]'
-                  }`}
-                >
-                  {group.name}
-                </div>
-                <p
-                  className="py-1.5 flex items-center cursor-pointer"
-                  onClick={() => toggleGroup(group.key)}
-                >
-                  {openGroups[group.key] ? (
-                    <IoIosArrowDropdown />
-                  ) : (
-                    <IoIosArrowDropright />
-                  )}
-                </p>
-              </div>
-              <div>
-                {group.key === 'school' && openGroups[group.key] ? (
-                  <input
-                    value={searchDataSchool}
-                    onChange={handleSearchValueSchool}
-                    className="border rounded-lg px-2 py-1 text-sm w-full placeholder:text-gray-400 placeholder:text-[11px]"
-                    placeholder="Tìm kiếm theo tên trường (Không viết tắt)...."
-                  />
-                ) : null}
-              </div>
+    <div className="w-full flex mb-4 items-center gap-4">
+      {/* Render tất cả nhóm tiêu chí */}
+      {filterGroups.map((group) => (
+        <div className="flex flex-col justify-center relative z-10">
+          {/* Tên */}
+          <div className="flex items-center border rounded-lg px-4 py-1 border-gray-400">
+            <div
+              onClick={() => toggleGroup(group.key)}
+              className={`py-1.5 pl-0 pr-1 text-sm md:text-[1rem] cursor-pointer transition-all font-medium ${
+                openGroups[group.key]
+                  ? 'text-[#06B6D4]'
+                  : 'text-gray-700 hover:text-[#06B6D4]'
+              }`}
+            >
+              {group.name}
             </div>
-            {/* Danh sách options */}
+            <p
+              className="py-1.5 flex items-center cursor-pointer"
+              onClick={() => toggleGroup(group.key)}
+            >
+              {openGroups[group.key] ? (
+                <IoIosArrowDropdown />
+              ) : (
+                <IoIosArrowDropright />
+              )}
+            </p>
+          </div>
+          {/* Dropdown */}
+          <div className="absolute top-[3.5rem] bg-white rounded-lg z-10 w-[20vw] h-auto md:left-0">
+            {group.key === 'school' && openGroups[group.key] ? (
+              <input
+                value={searchDataSchool}
+                onChange={handleSearchValueSchool}
+                className="absolute top-0 border rounded-lg px-2 text-sm w-full placeholder:text-gray-400 placeholder:text-[11px]"
+                placeholder="Tìm kiếm theo tên trường (Không viết tắt)...."
+              />
+            ) : null}
             {openGroups[group.key] &&
               group.options
                 .map((opt) => (
@@ -370,15 +371,21 @@ export default function SearchInput({ onSubmit }) {
                       type="checkbox"
                       checked={form[group.key]?.includes(opt.label)}
                       onChange={() => handleOptionToggle(group.key, opt.label)}
-                      className="w-4 h-4 mt-0.5 min-w-4 text-[#5FA9F0] border-gray-300 rounded focus:ring-[#5FA9F0]"
+                      className="w-4 h-4 mt-0.5 min-w-4 text-[#06B6D4] border-gray-300 rounded focus:ring-[#06B6D4]"
                     />
                     <span className="text-sm text-gray-700">{opt.label}</span>
                   </label>
                 ))
                 .slice(0, group.key === 'school' ? 10 : group.options.length)}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+      <button
+        onClick={handleClearFilter}
+        className="text-[#06B6D4] text-[1rem]"
+      >
+        Xóa lọc
+      </button>
     </div>
   )
 }

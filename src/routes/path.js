@@ -1,4 +1,4 @@
-import { LoginSignUp } from '../pages/Auth/Login_SignUp'
+import Auth from '../pages/Auth/Auth'
 import EventsPage from '../pages/Events'
 import HomePage from '../pages/HomePage'
 import News from '../pages/News'
@@ -12,8 +12,9 @@ import SeePortfolio from '../pages/PortFolio/SeePortfolio'
 import EditPortfolio from '../pages/PortFolio/EditPortfolio/EditPortfolio'
 import RankingPage from '../pages/Ranking'
 import PortfolioSaved from '../pages/PortFolio/PortfolioSaved/PortfolioSaved'
-import HomePageOganization from '../pages/HomePage/indexOganization'
 import EDITACCOUNT from '../pages/Auth/EditAccount'
+import HomepageOrganization from '../organization/pages/HomePage/index'
+import JobPage from '../pages/Job'
 export const PATH = {
   HOME: '/',
   EVENTS: '/events', // <--- Dùng cho trang danh sách
@@ -32,15 +33,22 @@ export const PATH = {
   RANKING: '/ranking',
   PORTFOLIOSAVED: '/lookup/portfolio',
   EDITACCOUNT: '/account/edit',
+  JOB: '/job',
 }
-export const isOganization = localStorage.getItem('isOrganization')
+// export const isOganization = localStorage.getItem('isOrganization')
+const dataUser = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : {}
+const role = dataUser ? dataUser.role : null
+const isOganization = role === 'organization'
+
 export const pathElement = [
   //auth
   {
     path: PATH.LOGIN,
     element: (
-      <LoginSignUp
-        type={'Đăng Nhập'}
+      <Auth
+        type={'login'}
         onClose={() => (window.location.href = '/eventsproject')}
       />
     ),
@@ -48,13 +56,16 @@ export const pathElement = [
   {
     path: PATH.REGISTER,
     element: (
-      <LoginSignUp
-        type={'Đăng Ký'}
+      <Auth
+        type={'register'}
         onClose={() => (window.location.href = '/eventsproject')}
       />
     ),
   },
-  { path: PATH.HOME, element: isOganization ? <c /> : <HomePage /> },
+  {
+    path: PATH.HOME,
+    element: isOganization ? <HomepageOrganization /> : <HomePage />,
+  },
   { path: PATH.EVENTS, element: <EventsPage /> },
   { path: PATH.NEWS, element: <News /> },
   { path: PATH.CONTACT, element: <ContactPage /> },
@@ -69,4 +80,5 @@ export const pathElement = [
   { path: PATH.EDITPORTFOLIO, element: <EditPortfolio /> },
   { path: PATH.PORTFOLIOSAVED, element: <PortfolioSaved /> },
   { path: PATH.EDITACCOUNT, element: <EDITACCOUNT /> },
+  { path: PATH.JOB, element: <JobPage /> },
 ]

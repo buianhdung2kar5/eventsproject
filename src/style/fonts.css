@@ -26,13 +26,16 @@
 
 /* Global font family with fallback system */
 :root {
-  --font-primary: 'Proxima Nova', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-primary:
+    'Proxima Nova', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
 }
 
 /* Apply font to all elements */
-* {
+/* * {
   font-family: var(--font-primary);
-}
+} */
 
 /* Specific font classes for different use cases */
 .font-proxima {
