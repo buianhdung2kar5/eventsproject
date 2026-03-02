@@ -1,214 +1,187 @@
-import { MdDateRange } from 'react-icons/md'
-import { dataEvents } from '../../data/events/events'
-import ListOpTionFilterEvents from '../../components/Events/getListOptionsFilterEvents'
-import { DataFilterOptions } from '../../components/Events/DataFilterOption'
-import PopUpConfirmRegister from '../../feature/homePage/PopUpConfirmRegister'
-import '../../style/global.css'
-import ListDataEvents from '../../components/Events/ListDataEvents'
-import AboutEventsWeb from '../../feature/AboutWeb/AboutEventsWeb'
+import { WiStars } from 'react-icons/wi'
 import { useNavigate } from 'react-router-dom'
-import { PATH } from '../../routes/path'
-import { GoPeople } from 'react-icons/go'
+import { IoMdPeople } from 'react-icons/io'
 import { LiaCertificateSolid } from 'react-icons/lia'
-import { FaArrowTrendUp } from 'react-icons/fa6'
-import { Input } from '../../ui/Input'
-import { CiSearch } from 'react-icons/ci'
+import { BsFillCalendar3EventFill } from 'react-icons/bs'
 
+import ListDataEvents from '../../components/Events/ListDataEvents'
 export default function HomePage() {
   const navigate = useNavigate()
-  const dataStatistic = [
+  const inforEvents = [
     {
       id: 1,
-      icon: <MdDateRange size="32px" />,
-      number: '500+',
-      name: 'Sự kiện',
+      label: 'Sự kiện',
+      value: '500',
     },
     {
       id: 2,
-      icon: <GoPeople size="32px" />,
-      number: '10,000+',
-      name: 'sinh viên tham gia',
+      label: 'Sinh viên',
+      value: '10,000',
     },
     {
       id: 3,
-      icon: <LiaCertificateSolid size="32px" />,
-      number: '50+',
-      name: 'Trường ĐH',
-    },
-    {
-      id: 4,
-      icon: <FaArrowTrendUp size="32px" />,
-      number: '95%',
-      name: 'Đánh giá',
+      label: 'Trường ĐH',
+      value: '50',
     },
   ]
-  const dataEvent = dataEvents
-  const DataOptionsFilter = DataFilterOptions
+  const tags = [
+    {
+      id: 1,
+      icon: (
+        <BsFillCalendar3EventFill
+          style={{
+            fontSize: '1.5rem',
+          }}
+        />
+      ),
+      label: 'Đa dạng sự kiện',
+      description:
+        'Hàng nghìn sự kiện từ công nghệ, kinh doanh đến văn hóa nghệ thuật',
+      className: 'bg-[#06B6D4]/10 text-gray-400',
+    },
+    {
+      id: 2,
+      icon: (
+        <LiaCertificateSolid
+          style={{
+            fontSize: '1.5rem',
+          }}
+        />
+      ),
+      label: 'Chứng chỉ SV 5 tốt',
+      description: 'Tích lũy chứng chỉ được công nhận, cộng điểm rèn luyện',
+      className: 'bg-[#DB0025]/10 text-[#DB0025]',
+    },
+    {
+      id: 3,
+      icon: (
+        <IoMdPeople
+          style={{
+            fontSize: '1.5rem',
+          }}
+        />
+      ),
+      label: 'Cộng đồng sinh viên',
+      description:
+        'Kết nối với hàng nghìn sinh viên cùng đam mê từ khắp Việt Nam',
+      className: 'bg-[#DCFCE7] text-[#00A63E]',
+    },
+  ]
   return (
-    <>
-      <div className="w-full min-h-screen">
-        <section
-          id="events"
-          className="w-full flex flex-col gap-6 bg-gradient-to-tl from-[#5FA9F0]/50 via-white to-[#5FA9F0]/50 justify-center items-center h-[580px] border-b"
-        >
-          <p className="text-3xl font-medium text-black flex flex-wrap italic">
-            {'Search less - Find more with EVENTS'
-              .split('')
-              .map((char, index) => (
-                <span
-                  key={index}
-                  style={{
-                    display: 'inline-block',
-                    opacity: 0,
-                    transform: 'translateY(20px)',
-                    animation: `fadeUp 0.5s ease-out forwards`,
-                    animationDelay: `${index * 0.05}s`,
-                  }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </span>
-              ))}
-
-            <style>
-              {`
-        @keyframes fadeUp {
-          0% {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}
-            </style>
+    <div className="flex flex-col items-center my-4 gap-12">
+      <section className="w-[86%] my-8 flex items-center justify-between">
+        {/* Content */}
+        {/* Main Content */}
+        <div className="flex flex-col justify-center items-start w-[45%] xl:gap-4 gap-2">
+          <div className="w-fit flex gap-1 text-[#06B6D4] items-center rounded-3xl lg:px-4 lg:py-2 px-2 py-1 border border-[#06B6D4]/20 bg-[#06B6D4]/10 font-bold lg:text-xs text-[8px]">
+            <WiStars
+              style={{
+                fontSize: '1.5rem',
+              }}
+            />
+            <p>Nền tảng sự kiện sinh viên số 1 Việt Nam</p>
+          </div>
+          <p className="text-[#273143] font-bold 2xl:text-6xl xl:text-5xl lg:text-3xl text-xl">
+            Khám phá sự kiện
           </p>
-          <div className="flex flex-col items-center justify-center text-[#5FA9F0] text-7xl font-poppins">
-            <p>Khám phá sự kiện</p>
-            <p>Kết nối tương lai</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-[#6B7280] text-lg">
-            <p>Tham gia hàng nghìn sự kiện từ các trường đại học hàng đầu.</p>
-            <p>Tích lũy hồ sơ sinh viên 5 tốt và phát triển bản thân!</p>
-          </div>
-          <div className="w-[40%] relative">
-            {/* Icon search */}
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl">
-              <CiSearch />
-            </div>
-
-            {/* Input container */}
-            <div className="bg-white shadow-lg shadow-gray-300/30 rounded-full">
-              <input
-                className="w-full pl-12 pr-4 py-3 rounded-full focus:outline-none text-gray-700 placeholder-gray-400"
-                placeholder="Tìm kiếm sự kiện, trường đại học, lĩnh vực..."
-              />
-            </div>
-          </div>
-
-          <div className="text-[#6B7280] text-[16px] flex flex-col items-center justify-center">
-            {/* <p className="text-xl font-medium text-black flex flex-wrap italic">
-              {'Search less - Find more with EVENTS'
-                .split('')
-                .map((char, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      display: 'inline-block',
-                      opacity: 0,
-                      transform: 'translateY(20px)',
-                      animation: `fadeUp 0.5s ease-out forwards`,
-                      animationDelay: `${index * 0.05}s`,
-                    }}
-                  >
-                    {char === ' ' ? '\u00A0' : char}
-                  </span>
-                ))}
-
-              <style>
-                {`
-        @keyframes fadeUp {
-          0% {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}
-              </style>
-            </p> */}
-          </div>
-          <div className="flex gap-6">
-            <button
-              className="border rounded-lg bg-[#5FA9F0] p-2  flex gap-1 items-center text-[white]"
-              onClick={() => navigate(PATH.EVENTS)}
-            >
-              <MdDateRange />
-              <p>Khám phá sự kiện</p>
-            </button>
-            <button
-              className="border rounded-lg bg-[#fff] text-black p-2"
-              onClick={() => navigate(PATH.REGISTER)}
-            >
-              Tạo tài khoản
-            </button>
-          </div>
-        </section>
-        <section
-          id="statistic"
-          className="flex gap-32 items-center w-full justify-center bg-white p-16"
-        >
-          {dataStatistic.map((item, index) => {
-            return (
-              <div key={item.id} className="flex flex-col items-center p-2">
-                <div
-                  className={
-                    index % 2 !== 0
-                      ? `text-[#F05A25] bg-[#F05A25]/10 p-4 rounded-full`
-                      : `text-[#5FA9F0] bg-[#5FA9F0]/10 p-4 rounded-full`
-                  }
-                >
-                  {item.icon}
+          <p className="text-[#06B6D4] font-bold xl:text-6xl lg:text-4xl text-2xl">
+            Sinh Viên
+          </p>
+          <p className="text-[#67688C] xl:text-lg text-sm xl:py-4 py-2">
+            Nền tảng kết nối sinh viên với các sự kiện, tìm kiếm cơ hội nghề
+            nghiệp nhất tại Việt Nam
+          </p>
+          <div className="w-[80%] flex items-center py-2 px-2 justify-between">
+            {inforEvents.map((item) => {
+              return (
+                <div key={item.id} className="flex flex-col gap-1">
+                  <p className="text-[#06B6D4] xl:text-3xl text-xl font-bold">
+                    {item.value}+
+                  </p>
+                  <p className="text-[#67688C] lg:text-sm text-xs">
+                    {item.label}
+                  </p>
                 </div>
-                <p className="">{item.number}</p>
-                <p>{item.name}</p>
-              </div>
-            )
-          })}
-        </section>
-        <section
-          id="outstandingEvents"
-          className="bg-white flex flex-col justify-center items-center gap-4 w-full pb-24 border-b"
-        >
-          <div className="flex flex-col items-center justify-center gap-2 border-t  w-full">
-            <p className="font-bold p-2 text-2xl pt-16">Sự kiện nổi bật</p>
-            <p className="p-2 text-[#6B7280] pt-0">
-              Khám phá những sự kiện được quan tâm nhiều nhất trong thời gian
-              tới
+              )
+            })}
+          </div>
+          <div className="flex gap-4">
+            <button
+              className="2xl:px-8 2xl:py-2 px-4 py-1 bg-[#06B6D4] text-white rounded-lg shadow-lg hover:bg-[#06B6D4]/80 transition-colors duration-300 2xl:text-lg lg:text-base text-xs"
+              onClick={() => {
+                navigate('/events')
+              }}
+            >
+              Khám phá ngay
+            </button>
+            <button
+              className="2xl:px-8 2xl:py-2 px-4 py-1 bg-white text-black rounded-lg shadow-lg hover:bg-[#DB0025]/80 transition-colors duration-300 2xl:text-lg lg:text-base text-xs"
+              onClick={() => {
+                navigate('/jobs')
+              }}
+            >
+              Việc làm
+            </button>
+          </div>
+        </div>
+        {/* Image */}
+        <div className="w-[45%] flex items-center justify-around 2xl:gap-4 gap-2">
+          <div className="flex flex-col justify-center w-[48%] 2xl:gap-8 lg:gap-4 gap-2">
+            <p className="xl:px-4 xl:py-4 px-2 py-2 w-full border rounded-2xl bg-[#DB0025] text-white shadow-lg">
+              <p className="font-bold xl:text-sm text-xs">Hot</p>
+              <p className="xl:text-sm text-xs">Sự kiện AI</p>
+            </p>
+            <img
+              alt="Hot Event"
+              src={process.env.PUBLIC_URL + '/image/Logo.png'}
+              className="w-full h-auto max-h-40 object-cover object-center rounded-2xl"
+            />
+          </div>
+          <div className="flex flex-col justify-center w-[48%] 2xl:gap-8 lg:gap-4 gap-2">
+            <img
+              alt="Hot Job"
+              src={process.env.PUBLIC_URL + '/image/Logo.png'}
+              className="w-full h-auto max-h-40 object-cover object-center rounded-2xl"
+            />
+            <p className="xl:px-4 xl:py-4 px-2 py-2 w-full border rounded-2xl bg-[#06B6D4] text-white shadow-lg">
+              <p className="font-bold xl:text-sm text-xs">Hot</p>
+              <p className="xl:text-sm text-xs">Job AI</p>
             </p>
           </div>
-          <div className="w-[60%]">
-            <ListDataEvents />
-          </div>
-          <button
-            className="border rounded-lg bg-white p-4 font-medium text-[16px]"
-            onClick={() => navigate(PATH.EVENTS)}
-          >
-            Xem tất cả sự kiện
-          </button>
-        </section>
-        <section className="bg-white w-full">
-          {/* <ListOpTionFilterEvents data={DataOptionsFilter} /> */}
-          <AboutEventsWeb />
-        </section>
-        <section className="bg-white h-[250px] p-y-8 w-full mb-8">
-          <PopUpConfirmRegister />
-        </section>
-      </div>
-    </>
+        </div>
+      </section>
+      <section className="w-[86%] my-8 flex flex-col items-center gap-1">
+        <p className="h1">Sự kiện nổi bật</p>
+        <p className="text-[#67688C] 2xl:text-xl lg:text-base text-sm">
+          Khám phá những sự kiện được quan tâm
+        </p>
+        <ListDataEvents />
+        <button
+          onClick={() => navigate('/events')}
+          className="xl:px-6 xl:py-2 px-4 py-1 mt-4 bg-white text-black rounded-2xl shadow-lg hover:text-white hover:bg-[#06B6D4]/90 transition-colors duration-300 text-sm"
+        >
+          Xem thêm sự kiện
+        </button>
+      </section>
+      <section className="w-[86%] my-8 flex flex-col justify-center items-center gap-8 mb-32">
+        <p className="h1">Tại sao chọn S-Events? </p>
+        <div className="flex flex-wrap justify-between gap-4">
+          {tags.map((tag) => (
+            <div
+              key={tag.id}
+              className="w-[30%] border rounded-2xl p-4 flex flex-col items-start gap-1 shadow-md"
+            >
+              <p className={`px-4 py-4 rounded-xl ${tag.className}`}>
+                {tag.icon}
+              </p>
+              <p className="font-bold xl:text-lg text-sm">{tag.label}</p>
+              <p className="text-xs mt-1 xl:text-sm text-gray-500">
+                {tag.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }
